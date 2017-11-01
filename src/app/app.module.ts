@@ -1,22 +1,37 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-import { UserComponent } from './user/user.component';
-import { QuizComponent } from './quiz/quiz.component';
+import { HttpModule, Http } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 import { LearningComponent } from './learning/learning.component';
+import { QuizComponent } from './quiz/quiz.component';
+import { UserComponent } from './user/user.component';
+import { Routes, RouterModule } from '@angular/router';
+import { AppComponent } from './app.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import * as $ from 'jquery';
+
+const appRoutes: Routes = [
+  { path: 'learning', component: LearningComponent },
+  { path: 'quiz', component: QuizComponent },
+  { path: 'user', component: UserComponent }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent,
+    LearningComponent,
     QuizComponent,
-    LearningComponent
+    UserComponent,
+    NavbarComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(appRoutes),
+    HttpModule,
+    FormsModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}
