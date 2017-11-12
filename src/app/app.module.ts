@@ -11,7 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import * as $ from 'jquery';
 
 const appRoutes: Routes = [
-  { path: 'learning', component: LearningComponent },
+  { path: 'learning/:continent', component: LearningComponent },
   { path: 'quiz/:type', component: QuizComponent },
   { path: 'user', component: UserComponent }
 ];
