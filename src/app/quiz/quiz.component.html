@@ -1,3 +1,25 @@
 <div class="container-fluid">
-  <h3 class="text-center">Quiz page</h3>
+  <button *ngIf="!quizStarted" (click)="startQuiz()" class="center-block">Start quiz</button>
+  <div class="text-center">
+      <span *ngIf="quizStarted">{{seconds}} s</span>
+  </div>
+  <div *ngIf="quizStarted" style="border: 1px solid black" class="col-sm-6 col-sm-offset-3">
+    <h3>Question {{step}}</h3>
+    <div>{{currentQuestion.question}}</div>
+    <div style="display: inline-block" *ngFor="let answer of answers">
+      <img (click)="submitAnswer(answer)" id="{{answer}}" src="../../assets/flags/{{answer}}.png" />
+    </div>
+    <!-- <div>
+      <img src="../../assets/flags/ba.png" />
+    </div>
+    <div>
+      <img src="../../assets/flags/ba.png" />
+    </div>
+    <div>
+      <img src="../../assets/flags/ba.png" />
+    </div>
+    <div>
+      <img src="../../assets/flags/ba.png" />
+    </div> -->
+  </div>
 </div>
