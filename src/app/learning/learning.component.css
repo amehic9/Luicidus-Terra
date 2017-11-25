@@ -1,0 +1,11 @@
+.flagRect:hover {
+    /*fill: white;*/
+    cursor: pointer;
+    stroke: red;
+    stroke-width: 4;
+    stroke-linecap: round;
+}
+
+.flagColors:hover {
+    cursor: pointer;
+}
