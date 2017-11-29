@@ -8,8 +8,10 @@ import { Http } from '@angular/http';
   styleUrls: ['./quiz.component.css']
 })
 export class QuizComponent implements OnInit {
+  cancel;
   quizStarted = false;
-  quizType = this.route.snapshot.params['type'];
+  quizType = "";
+  allQuestions = [];
   questions = [];
   currentQuestion = {};
   seconds = 0;
@@ -20,7 +22,7 @@ export class QuizComponent implements OnInit {
   constructor(private route: ActivatedRoute, private http: Http) { }
 
   ngOnInit() {
-    this.getQuestions();
+    //this.getQuestions();
   }
 
   getQuestions() {
@@ -28,7 +30,10 @@ export class QuizComponent implements OnInit {
       .subscribe(
       response => {
         let responseJson = response.json();
-        this.questions = (<any>responseJson).questions;
+        this.allQuestions = [];
+        for (var i = 0; i < (<any>responseJson).questions.length; i++) {
+          this.allQuestions.push((<any>responseJson).questions[i]);
+        }
       }
       )
   }
@@ -41,16 +46,53 @@ export class QuizComponent implements OnInit {
     this.seconds += 1;
   }
 
-  startQuiz() {
-    this.quizStarted = true;
-    let cancel = setInterval(() => {
-      this.incrementSeconds();
-    }, 1000);
+  startFlagsQuiz() {
+    setTimeout(() => {
+      $('.time').css('display', 'block');
+      $('.general-quiz-box').css('display', 'none');
+      $('.flag-quiz-box').css('display', 'block');
+      $('.quiz-results').css('display', 'none');
+      this.quizStarted = true;
+      this.correctAnswers = 0;
+      for (var i = 0; i < this.allQuestions.length; i++) {
+        this.questions.push(this.allQuestions[i]);
+      }
+      this.cancel = setInterval(() => {
+        this.incrementSeconds();
+      }, 1000);
 
-    this.showNextQuestion();
+      this.showNextFlagsQuestion();
+    }, 1000);
   }
 
-  showNextQuestion() {
+  startGeneralQuiz() {
+    setTimeout(() => {
+      $('.time').css('display', 'block');
+      $('.flag-quiz-box').css('display', 'none');
+      $('.general-quiz-box').css('display', 'block');
+      $('.quiz-results').css('display', 'none');
+      this.quizStarted = true;
+      this.correctAnswers = 0;
+      for (var i = 0; i < this.allQuestions.length; i++) {
+        this.questions.push(this.allQuestions[i]);
+      }
+      this.cancel = setInterval(() => {
+        this.incrementSeconds();
+      }, 1000);
+
+      this.showNextGeneralQuestion();
+    }, 1000);
+  }
+
+  showNextGeneralQuestion() {
+    let index = Math.floor(Math.random() * (this.questions.length - 1 - 0) + 0);
+    this.currentQuestion = this.questions[index];
+    this.answers = (<any>this).currentQuestion.answers;
+    this.shuffleAnswers();
+    this.questions.splice(index, 1);
+  }
+
+  showNextFlagsQuestion() {
     let index = Math.floor(Math.random() * (this.questions.length - 1 - 0) + 0);
     this.currentQuestion = this.questions[index];
     this.answers = (<any>this).currentQuestion.answers;
@@ -70,11 +112,21 @@ export class QuizComponent implements OnInit {
       this.correctAnswers++;
     }
     if (this.questions.length) {
-      this.showNextQuestion();
+      this.step++;
+      this.showNextFlagsQuestion();
     }
     else {
-      alert("right answers: " + this.correctAnswers);
+      this.atQuizEnd();
     }
+  }
+
+  atQuizEnd() {
+    $('.time').css('display', 'none');
+    $('.flag-quiz-box, .general-quiz-box').css('display', 'none');
+    this.seconds = 0;
+    this.step = 1;
+    clearInterval(this.cancel);
+    $('.quiz-results').css('display', 'block');
   }
 
 }
