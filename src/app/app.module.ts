@@ -12,7 +12,7 @@ import * as $ from 'jquery';
 
 const appRoutes: Routes = [
   { path: 'learning/:continent', component: LearningComponent },
-  { path: 'quiz/:type', component: QuizComponent },
+  { path: 'quiz', component: QuizComponent },
   { path: 'user', component: UserComponent }
 ];
 

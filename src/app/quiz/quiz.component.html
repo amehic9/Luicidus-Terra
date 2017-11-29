@@ -1,25 +1,33 @@
-<div class="container-fluid">
-  <button *ngIf="!quizStarted" (click)="startQuiz()" class="center-block">Start quiz</button>
-  <div class="text-center">
+<div class="container-fluid center-element">
+  <button *ngIf="!quizStarted" (click)="quizType = 'flags'; this.getQuestions(); startFlagsQuiz();" class="center-block btn btn-default btn-lg">Start flags quiz</button>
+  <button *ngIf="!quizStarted" (click)="quizType = 'general'; this.getQuestions(); startGeneralQuiz();" class="center-block btn btn-default btn-lg">Start general quiz</button>
+  <div class="time text-center">
       <span *ngIf="quizStarted">{{seconds}} s</span>
   </div>
-  <div *ngIf="quizStarted" style="border: 1px solid black" class="col-sm-6 col-sm-offset-3">
-    <h3>Question {{step}}</h3>
-    <div>{{currentQuestion.question}}</div>
-    <div style="display: inline-block" *ngFor="let answer of answers">
-      <img (click)="submitAnswer(answer)" id="{{answer}}" src="../../assets/flags/{{answer}}.png" />
+
+  <div class="flag-quiz-box center-block text-center">
+    <div class="flag-quiz-question">
+      <h3>Question {{step}} / 10</h3>
+      <h3><b>{{currentQuestion.question}}</b></h3>
     </div>
-    <!-- <div>
-      <img src="../../assets/flags/ba.png" />
+    <div class="flag-wrapper" *ngFor="let answer of answers">
+      <img class="flag-option cursor-pointer" (click)="submitAnswer(answer)" id="{{answer}}" src="../../assets/flags/{{answer}}.png" />
     </div>
-    <div>
-      <img src="../../assets/flags/ba.png" />
+  </div>
+
+  <div class="general-quiz-box center-block text-center">
+    <div class="flag-quiz-question">
+      <h3>Question {{step}} / 10</h3>
+      <h3><b>{{currentQuestion.question}}</b></h3>
     </div>
-    <div>
-      <img src="../../assets/flags/ba.png" />
+    <div class="general-wrapper" *ngFor="let answer of answers">
+      <p class="cursor-pointer" (click)="submitAnswer(answer)" id="{{answer}}">{{answer}}</p>
     </div>
-    <div>
-      <img src="../../assets/flags/ba.png" />
-    </div> -->
+  </div>
+
+  <div class="quiz-results text-center">
+    <h4>You had {{correctAnswers}} correct answers</h4>
+    <button (click)="quizType = 'flags'; this.getQuestions(); startFlagsQuiz();" class="center-block btn btn-default btn-lg">Start flags quiz</button>
+    <button (click)="quizType = 'general'; this.getQuestions(); startGeneralQuiz();" class="center-block btn btn-default btn-lg">Start general quiz</button>
   </div>
 </div>
