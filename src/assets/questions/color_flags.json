@@ -15,7 +15,96 @@
             "question": "Germany",
             "correct": ["black", "red", "yellow"],
             "type": "horizontal"
+        },
+        {
+            "question": "Argentina",
+            "correct": ["blue", "white", "blue"],
+            "type": "horizontal"
+        },
+        {
+            "question": "Armenia",
+            "correct": ["red", "blue", "yellow"],
+            "type": "horizontal"
+        },
+        {
+            "question": "Azerbaijan",
+            "correct": ["blue", "red", "green"],
+            "type": "horizontal"
+        },
+        {
+            "question": "Bolivia",
+            "correct": ["red", "yellow", "green"],
+            "type": "horizontal"
+        },
+        {
+            "question": "Bulgaria",
+            "correct": ["white", "green", "red"],
+            "type": "horizontal"
+        },
+        {
+            "question": "Croatia",
+            "correct": ["red", "white", "blue"],
+            "type": "horizontal"
+        },
+        {
+            "question": "Egypt",
+            "correct": ["red", "white", "black"],
+            "type": "horizontal"
+        },
+        {
+            "question": "El Salvador",
+            "correct": ["blue", "white", "blue"],
+            "type": "horizontal"
+        },
+        {
+            "question": "Estonia",
+            "correct": ["blue", "black", "white"],
+            "type": "horizontal"
+        },
+        {
+            "question": "Gabon",
+            "correct": ["green", "yellow", "blue"],
+            "type": "horizontal"
+        },
+        {
+            "question": "Iran",
+            "correct": ["green", "white", "red"],
+            "type": "horizontal"
+        },
+        {
+            "question": "Hungary",
+            "correct": ["red", "yellow", "green"],
+            "type": "horizontal"
+        },
+        {
+            "question": "Latvia",
+            "correct": ["red", "white", "red"],
+            "type": "horizontal"
+        },
+        {
+            "question": "Lithuania",
+            "correct": ["yellow", "green", "red"],
+            "type": "horizontal"
+        },
+        {
+            "question": "Luxembourg",
+            "correct": ["red", "white", "blue"],
+            "type": "horizontal"
+        },
+        {
+            "question": "Netherlands",
+            "correct": ["red", "white", "blue"],
+            "type": "horizontal"
+        },
+        {
+            "question": "Sierra Leone",
+            "correct": ["green", "white", "blue"],
+            "type": "horizontal"
+        },
+        {
+            "question": "Yemen",
+            "correct": ["red", "white", "black"],
+            "type": "horizontal"
         }
     ]
-
 }

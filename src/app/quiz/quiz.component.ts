@@ -42,6 +42,9 @@ export class QuizComponent implements OnInit {
           for (var i = 0; i < (<any>responseJson).questions.length; i++) {
             this.allQuestions.push((<any>responseJson).questions[i]);
           }
+
+          this.shuffleQuestions();  // take random values from the list
+          this.allQuestions = this.allQuestions.slice(0,10);  // take only first 10 elements
         }
       )
   }
@@ -135,26 +138,17 @@ export class QuizComponent implements OnInit {
     this.questions.splice(index, 1);
   }
 
-  showNextGeneralQuestion() {
-    let index = Math.floor(Math.random() * (this.questions.length - 1 - 0) + 0);
-    this.currentQuestion = this.questions[index];
-    this.answers = (<any>this).currentQuestion.answers;
-    this.shuffleAnswers();
-    this.questions.splice(index, 1);
-  }
-
-  showNextFlagsQuestion() {
-    let index = Math.floor(Math.random() * (this.questions.length - 1 - 0) + 0);
-    this.currentQuestion = this.questions[index];
-    this.answers = (<any>this).currentQuestion.answers;
-    this.shuffleAnswers();
-    this.questions.splice(index, 1);
-  }
-
   shuffleAnswers() {
     for (let i = this.answers.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [this.answers[i], this.answers[j]] = [this.answers[j], this.answers[i]];
+    }
+  }
+
+  shuffleQuestions() {
+    for (let i = this.allQuestions.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [this.allQuestions[i], this.allQuestions[j]] = [this.allQuestions[j], this.allQuestions[i]];
     }
   }
 

@@ -7,49 +7,109 @@
             "correct": "Moscow"
         },
         {
-            "question": "What is capital of Russia",
-            "answers": ["Moscow", "Kiev", "Baku", "Minsk"],
-            "correct": "Moscow"
+            "question": "What is the largest country in the world",
+            "answers": ["Canada", "USA", "Russia", "China"],
+            "correct": "Russia"
         },
         {
-            "question": "What is capital of Russia",
-            "answers": ["Moscow", "Kiev", "Baku", "Minsk"],
-            "correct": "Moscow"
+            "question": "Which of the following countries has a population exceeding 100 million",
+            "answers": ["Germany", "Saudi Arabia", "Pakistan", "Canada"],
+            "correct": "Pakistan"
         },
         {
-            "question": "What is capital of Russia",
-            "answers": ["Moscow", "Kiev", "Baku", "Minsk"],
-            "correct": "Moscow"
+            "question": "Muscat is the capital of which country",
+            "answers": ["Yemen", "Oman", "Kuwait", "Bahrain"],
+            "correct": "Oman"
         },
         {
-            "question": "What is capital of Russia",
-            "answers": ["Moscow", "Kiev", "Baku", "Minsk"],
-            "correct": "Moscow"
+            "question": "With how many countries does Austria border",
+            "answers": ["6", "7", "8", "9"],
+            "correct": "8"
         },
         {
-            "question": "What is capital of Russia",
-            "answers": ["Moscow", "Kiev", "Baku", "Minsk"],
-            "correct": "Moscow"
+            "question": "Which river flows through Innsbruck",
+            "answers": ["Inn", "Donau", "Mur", "Una"],
+            "correct": "Inn"
         },
         {
-            "question": "What is capital of Russia",
-            "answers": ["Moscow", "Kiev", "Baku", "Minsk"],
-            "correct": "Moscow"
+            "question": "The great Victoria Desert is located in",
+            "answers": ["Canada", "Saudi Arabia", "Australia", "China"],
+            "correct": "Australia"
         },
         {
-            "question": "What is capital of Russia",
-            "answers": ["Moscow", "Kiev", "Baku", "Minsk"],
-            "correct": "Moscow"
+            "question": "The intersecting lines drawn on maps and globes are",
+            "answers": ["latitudes", "longitudes", "geographic grids", "lamnitudes"],
+            "correct": "geographic grid"
         },
         {
-            "question": "What is capital of Russia",
-            "answers": ["Moscow", "Kiev", "Baku", "Minsk"],
-            "correct": "Moscow"
+            "question": "The habitats valuable for commercially harvested species are called",
+            "answers": ["coral reefs", "sea grass bed", "hot spots", "green planktons"],
+            "correct": "sea grass bed"
         },
         {
-            "question": "What is capital of Russia",
-            "answers": ["Moscow", "Kiev", "Baku", "Minsk"],
-            "correct": "Moscow"
+            "question": "Which of the following is tropical grassland",
+            "answers": ["Taiga", "Savannah", "Pampas", "Prairies"],
+            "correct": "Savannah"
+        },
+        {
+            "question": "What is the name of the only coastline town in Bosnia and Herzegovina",
+            "answers": ["Neum", "Grude", "Mostar", "Trebinje"],
+            "correct": "Neum"
+        },
+        {
+            "question": "How many regions (zupanije and city status) does Croatia have",
+            "answers": ["23", "19", "21", "18"],
+            "correct": "21"
+        },
+        {
+            "question": "What is the highest peak in Croatia",
+            "answers": ["Vaganski vrh", "Sveti Jure", "Kamesnica", "Dinara (Sinjal)"],
+            "correct": "Dinara (Sinjal)"
+        },
+        {
+            "question": "In which country is the source of the river Una",
+            "answers": ["Bosnia and Herzegovina", "Serbia", "Slovenia", "Croatia"],
+            "correct": "Croatia"
+        },
+        {
+            "question": "How long is the rivel Nile in km",
+            "answers": ["6,853", "7,145", "7,096", "6,983"],
+            "correct": "6,853"
+        },
+        {
+            "question": "The iron and steel industries of which of the following countries are almost fully dependent on imported raw materials",
+            "answers": ["Britain", "Japan", "Poland", "Germany"],
+            "correct": "Japan"
+        },
+        {
+            "question": "The temperature increases rapidly after",
+            "answers": ["ionosphere", "exosphere", "stratosphere", "troposphere"],
+            "correct": "ionosphere"
+        },
+        {
+            "question": "The humidity of the air depends upon",
+            "answers": ["temperature", "location", "weather", "all of the mentioned"],
+            "correct": "all of the mentioned"
+        },
+        {
+            "question": "The groundwater can become confined between two impermeable layers. This type of enclosed water is called",
+            "answers": ["artesian", "artesian well", "unconfined groundwater", "confined groundwater"],
+            "correct": "Neum"
+        },
+        {
+            "question": "What is the name of the smallest municipality (by population) in Bosnia and Herzegovina",
+            "answers": ["Juzni Doboj", "Istocni Drvar", "Kalinovik", "Trnovo"],
+            "correct": "Istocni Drvar"
+        },
+        {
+            "question": "The largest glaciers are",
+            "answers": ["mountain glaciers", "alpine glaciers", "continental glaciers", "piedmont glaciers"],
+            "correct": "continental glaciers"
+        },
+        {
+            "question": "The leading state in producing paper is",
+            "answers": ["Bihar", "West Bengal", "Kerala", "Orissa"],
+            "correct": "West Bengal"
         }
     ]
 }
