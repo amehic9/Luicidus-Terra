@@ -1,5 +1,6 @@
 <div class="container-fluid center-element">
   <button *ngIf="!quizStarted" (click)="quizType = 'flags'; this.getQuestions(); startFlagsQuiz();" class="center-block btn btn-default btn-lg">Start flags quiz</button>
+  <button *ngIf="!quizStarted" (click)="quizType = 'color_flags'; this.getQuestions(); startColorFlagsQuiz();" class="center-block btn btn-default btn-lg">Start color flag quiz</button>
   <button *ngIf="!quizStarted" (click)="quizType = 'general'; this.getQuestions(); startGeneralQuiz();" class="center-block btn btn-default btn-lg">Start general quiz</button>
   <div class="time text-center">
       <span *ngIf="quizStarted">{{seconds}} s</span>
@@ -25,9 +26,99 @@
     </div>
   </div>
 
+  <!-- Flag coloring quiz Start -->
+
+  <div class="color-flag-quiz-box center-block text-center">
+    <div class="flag-quiz-question">
+      <h3>Question {{step}} / 10</h3>
+      <h3><b>{{currentQuestion.question}}</b></h3>
+    </div>
+    <div class="color-flag-wrapper">
+      <p> Please choose the correct colors for the flag of the named country. </p>
+      <p> Note: Emblems and flag segment proportions are ignored for simplicity. </p>
+    
+      <hr>
+      
+      <svg id="flag" height="150px" width="550px">
+        <defs>
+            <filter id="MyFilter">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur" />
+                <feOffset in="blur" dx="4" dy="4" result="offsetBlur"/>
+                <feSpecularLighting in="blur" surfaceScale="5" specularConstant="1" 
+                                specularExponent="10" lighting-color="white"  
+                                result="specOut">
+                    <fePointLight x="-5000" y="-10000" z="20000"/>
+                </feSpecularLighting>
+                <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut"/>
+                <feComposite in="SourceGraphic" in2="specOut" operator="arithmetic" 
+                        k1="0" k2="1" k3="1" k4="0" result="litPaint"/>
+                <feMerge>
+                    <feMergeNode in="offsetBlur"/>
+                    <feMergeNode in="litPaint"/>
+                </feMerge>
+            </filter>
+        </defs>
+    
+        <g stroke="black" stroke-width="2">
+            <rect class="flagRect" width="300" height="50" x="20" y="0" (click)="colorFlag($event)" fill="black" id="rectColor1"></rect>  
+            <rect class="flagRect" width="300" height="50" x="20" y="50" (click)="colorFlag($event)" fill="black" id="rectColor2"></rect>
+            <rect class="flagRect" width="300" height="50" x="20" y="100" (click)="colorFlag($event)" fill="black" id="rectColor3"></rect>  
+        </g>    
+    
+        <g stroke="black" (click)="pickColor();" class="flagColors">
+            <rect *ngIf="filterColor[0] else alterTemp1" width="50" height="50" x="380" y="0" fill="white" filter="url(#MyFilter)"
+             (mouseenter) ="currentColorID = 0; currentColor = 'white';"></rect>  
+            <ng-template #alterTemp1>
+                    <rect width="50" height="50" x="380" y="0" fill="white" (mouseenter) ="currentColorID = 0"></rect>   
+            </ng-template>
+    
+            <rect *ngIf="filterColor[1] else alterTemp2" width="50" height="50" x="430" y="0" fill="black" filter="url(#MyFilter)"
+            (mouseenter) ="currentColorID = 1; currentColor = 'black';"></rect>  
+            <ng-template #alterTemp2>
+                   <rect width="50" height="50" x="430" y="0" fill="black" (mouseenter) ="currentColorID = 1"></rect>   
+            </ng-template>
+    
+            <rect *ngIf="filterColor[2] else alterTemp3" width="50" height="50" x="480" y="0" fill="green" filter="url(#MyFilter)"
+             (mouseenter) ="currentColorID = 2; currentColor = 'green';"></rect> 
+            <ng-template #alterTemp3>
+                    <rect width="50" height="50" x="480" y="0" fill="green" (mouseenter) ="currentColorID = 2"></rect>
+            </ng-template>
+    
+            <rect *ngIf="filterColor[3] else alterTemp4" width="50" height="50" x="380" y="50" fill="red" filter="url(#MyFilter)"
+             (mouseenter) ="currentColorID = 3; currentColor = 'red';"></rect> 
+            <ng-template #alterTemp4>
+                    <rect width="50" height="50" x="380" y="50" fill="red" (mouseenter) ="currentColorID = 3"></rect> 
+            </ng-template>
+    
+            <rect *ngIf="filterColor[4] else alterTemp5" width="50" height="50" x="430" y="50" fill="blue" filter="url(#MyFilter)"
+             (mouseenter) ="currentColorID = 4; currentColor = 'blue';"></rect> 
+            <ng-template #alterTemp5>
+                <rect width="50" height="50" x="430" y="50" fill="blue" (mouseenter) ="currentColorID = 4"></rect> 
+            </ng-template>
+    
+            <rect *ngIf="filterColor[5] else alterTemp6" width="50" height="50" x="480" y="50" fill="yellow" filter="url(#MyFilter)"
+            (mouseenter) ="currentColorID = 5; currentColor = 'yellow';"></rect> 
+           <ng-template #alterTemp6>
+               <rect width="50" height="50" x="480" y="50" fill="yellow" (mouseenter) ="currentColorID = 5"></rect> 
+           </ng-template>
+        </g>
+      </svg>  
+
+      <span style="margin : 10px"> </span>
+
+      <div class="general-wrapper">
+        <p class="cursor-pointer" (click)="submitAnswerColorFlag()" id="color-flag-answer">Submit Answer</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Flag coloring quiz End -->
+
   <div class="quiz-results text-center">
-    <h4>You had {{correctAnswers}} correct answers</h4>
+    <h4>You had {{correctAnswers}} correct answers in {{seconds}} s.</h4>
     <button (click)="quizType = 'flags'; this.getQuestions(); startFlagsQuiz();" class="center-block btn btn-default btn-lg">Start flags quiz</button>
+    <button (click)="quizType = 'color_flags'; this.getQuestions(); startColorFlagsQuiz();" class="center-block btn btn-default btn-lg">Start color flag quiz</button>
     <button (click)="quizType = 'general'; this.getQuestions(); startGeneralQuiz();" class="center-block btn btn-default btn-lg">Start general quiz</button>
   </div>
 </div>

@@ -1,0 +1,21 @@
+{
+    "questions":
+    [
+        {
+            "question": "Austria",
+            "correct": ["red", "white", "red"],
+            "type": "horizontal"
+        },
+        {
+            "question": "Slovenia",
+            "correct": ["white", "blue", "red"],
+            "type": "horizontal"
+        },
+        {
+            "question": "Germany",
+            "correct": ["black", "red", "yellow"],
+            "type": "horizontal"
+        }
+    ]
+
+}

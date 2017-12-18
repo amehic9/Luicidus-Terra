@@ -19,6 +19,14 @@ export class QuizComponent implements OnInit {
   answers = [];
   correctAnswers = 0;
 
+  // color-flag
+  flag_colors:string[] = ["black", "black", "black"];
+  filterColor:boolean[] = [false, false, false, false, false, false];
+  currentColorID:number;
+  currentColor:string = "white";
+
+  colorFlagQuiz:boolean = false;
+
   constructor(private route: ActivatedRoute, private http: Http) { }
 
   ngOnInit() {
@@ -28,13 +36,13 @@ export class QuizComponent implements OnInit {
   getQuestions() {
     this.getQuestionsJson()
       .subscribe(
-      response => {
-        let responseJson = response.json();
-        this.allQuestions = [];
-        for (var i = 0; i < (<any>responseJson).questions.length; i++) {
-          this.allQuestions.push((<any>responseJson).questions[i]);
+        response => {
+          let responseJson = response.json();
+          this.allQuestions = [];
+          for (var i = 0; i < (<any>responseJson).questions.length; i++) {
+            this.allQuestions.push((<any>responseJson).questions[i]);
+          }
         }
-      }
       )
   }
 
@@ -51,7 +59,11 @@ export class QuizComponent implements OnInit {
       $('.time').css('display', 'block');
       $('.general-quiz-box').css('display', 'none');
       $('.flag-quiz-box').css('display', 'block');
+      $('.color-flag-quiz-box').css('display', 'none');
       $('.quiz-results').css('display', 'none');
+      this.colorFlagQuiz = false;
+
+      this.seconds = 0;
       this.quizStarted = true;
       this.correctAnswers = 0;
       for (var i = 0; i < this.allQuestions.length; i++) {
@@ -61,7 +73,7 @@ export class QuizComponent implements OnInit {
         this.incrementSeconds();
       }, 1000);
 
-      this.showNextFlagsQuestion();
+      this.showNextQuestion();
     }, 1000);
   }
 
@@ -70,7 +82,11 @@ export class QuizComponent implements OnInit {
       $('.time').css('display', 'block');
       $('.flag-quiz-box').css('display', 'none');
       $('.general-quiz-box').css('display', 'block');
+      $('.color-flag-quiz-box').css('display', 'none');
       $('.quiz-results').css('display', 'none');
+      this.colorFlagQuiz = false;
+
+      this.seconds = 0;
       this.quizStarted = true;
       this.correctAnswers = 0;
       for (var i = 0; i < this.allQuestions.length; i++) {
@@ -80,8 +96,43 @@ export class QuizComponent implements OnInit {
         this.incrementSeconds();
       }, 1000);
 
-      this.showNextGeneralQuestion();
+      this.showNextQuestion();
     }, 1000);
+  }
+
+  startColorFlagsQuiz() {
+    setTimeout(() => {
+      $('.time').css('display', 'block');
+      $('.color-flag-quiz-box').css('display', 'block');
+      $('.flag-quiz-box').css('display', 'none');
+      $('.general-quiz-box').css('display', 'none');
+      $('.quiz-results').css('display', 'none');
+      this.colorFlagQuiz = true;
+
+      this.seconds = 0;
+      this.quizStarted = true;
+      this.correctAnswers = 0;
+      for (var i = 0; i < this.allQuestions.length; i++) {
+        this.questions.push(this.allQuestions[i]);
+      }
+      this.cancel = setInterval(() => {
+        this.incrementSeconds();
+      }, 1000);
+
+      this.showNextQuestion();
+    }, 1000);
+  }
+
+  showNextQuestion() {
+    let index = Math.floor(Math.random() * (this.questions.length - 1 - 0) + 0);
+    this.currentQuestion = this.questions[index];
+
+    if(!this.colorFlagQuiz) {
+      this.answers = (<any>this).currentQuestion.answers;
+      this.shuffleAnswers();
+    }
+
+    this.questions.splice(index, 1);
   }
 
   showNextGeneralQuestion() {
@@ -113,7 +164,32 @@ export class QuizComponent implements OnInit {
     }
     if (this.questions.length) {
       this.step++;
-      this.showNextFlagsQuestion();
+      this.showNextQuestion();
+    }
+    else {
+      this.atQuizEnd();
+    }
+  }
+
+  submitAnswerColorFlag() {
+    let correct_flag_colors = (<any>this.currentQuestion).correct;
+
+    let color_check_1 = correct_flag_colors[0] === this.flag_colors[0];
+    let color_check_2 = correct_flag_colors[1] === this.flag_colors[1];
+    let color_check_3 = correct_flag_colors[2] === this.flag_colors[2];
+
+    if (color_check_1 && color_check_2 && color_check_3) {
+      this.correctAnswers++;
+    }
+
+    this.flag_colors = ["black", "black", "black"];
+    document.getElementById("rectColor1").setAttribute("fill", "black");
+    document.getElementById("rectColor2").setAttribute("fill", "black");
+    document.getElementById("rectColor3").setAttribute("fill", "black");
+
+    if (this.questions.length) {
+      this.step++;
+      this.showNextQuestion();
     }
     else {
       this.atQuizEnd();
@@ -122,11 +198,36 @@ export class QuizComponent implements OnInit {
 
   atQuizEnd() {
     $('.time').css('display', 'none');
-    $('.flag-quiz-box, .general-quiz-box').css('display', 'none');
-    this.seconds = 0;
+    $('.flag-quiz-box, .general-quiz-box, .color-flag-quiz-box').css('display', 'none');
     this.step = 1;
     clearInterval(this.cancel);
     $('.quiz-results').css('display', 'block');
+  }
+
+  // color-flag
+  pickColor(): void{  
+    this.filterColor.forEach((element, index, array) => {
+        if(index == this.currentColorID) {
+            array[index] = true;
+        }
+        else {
+            array[index] = false;
+        }
+    });
+  }
+
+  colorFlag(object): void{
+      object.target.attributes['fill'].value = this.currentColor;
+      
+      if(object.target.attributes['id'].value === "rectColor1")
+      {
+        this.flag_colors[0] = this.currentColor;
+      }
+      else if (object.target.attributes['id'].value === "rectColor2") {
+        this.flag_colors[1] = this.currentColor;
+      } else {
+        this.flag_colors[2] = this.currentColor;
+      }
   }
 
 }

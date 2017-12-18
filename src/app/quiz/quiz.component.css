@@ -25,7 +25,7 @@
     box-shadow: 0 0 46px -19px rgba(0,0,0,.64);
 }
 
-.flag-quiz-box, .general-quiz-box {
+.flag-quiz-box, .general-quiz-box, .color-flag-quiz-box {
     box-shadow: 0 0 46px -19px rgba(0,0,0,.64);
     min-height: 500px;
     width: 550px;
@@ -58,4 +58,17 @@
 
 .time {
     margin: 20px 0 30px 0;
+}
+
+
+.flagRect:hover {
+    /*fill: white;*/
+    cursor: pointer;
+    stroke: red;
+    stroke-width: 4;
+    stroke-linecap: round;
+}
+
+.flagColors:hover {
+    cursor: pointer;
 }
