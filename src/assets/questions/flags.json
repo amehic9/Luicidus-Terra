@@ -50,6 +50,66 @@
             "question": "Congo",
             "answers": ["cg", "cf", "cm", "ao"],
             "correct": "cg"
+        },
+        {
+            "question": "Bosnia and Herzegovina",
+            "answers": ["cx", "ba", "gm", "kosovo"],
+            "correct": "ba"
+        },
+        {
+            "question": "Japan",
+            "answers": ["gl", "ne", "mk", "jp"],
+            "correct": "jp"
+        },
+        {
+            "question": "Libya",
+            "answers": ["mv", "ly", "mr", "pk"],
+            "correct": "ly"
+        },
+        {
+            "question": "Somalia",
+            "answers": ["so", "sg", "km", "id"],
+            "correct": "so"
+        },
+        {
+            "question": "Croatia",
+            "answers": ["ba", "si", "mk", "hr"],
+            "correct": "hr"
+        },
+        {
+            "question": "Serbia",
+            "answers": ["rs", "ad", "ru", "py"],
+            "correct": "rs"
+        },
+        {
+            "question": "Ukraine",
+            "answers": ["rs", "td", "ua", "ro"],
+            "correct": "ua"
+        },
+        {
+            "question": "Mauritania",
+            "answers": ["ae", "mr", "az", "cc"],
+            "correct": "mr"
+        },
+        {
+            "question": "Ghana",
+            "answers": ["gh", "jm", "az", "ma"],
+            "correct": "gh"
+        },
+        {
+            "question": "Lichtenstein",
+            "answers": ["lu", "it", "pe", "li"],
+            "correct": "li"
+        },
+        {
+            "question": "Austria",
+            "answers": ["lv", "hu", "at", "pe"],
+            "correct": "at"
+        },
+        {
+            "question": "Indonesia",
+            "answers": ["pl", "pe", "mc", "id"],
+            "correct": "id"
         }
     ]
 }
