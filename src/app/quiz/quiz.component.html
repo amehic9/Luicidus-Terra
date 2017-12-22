@@ -121,8 +121,16 @@
   </div>
 </div>
 
-<audio id="sound" hidden>
+<audio id="sound">
   <source src="assets/audio/quizsound.ogg" type="audio/ogg">
   <source src="assets/audio/quizsound.mp3" type="audio/mpeg">
   Your browser does not support the audio tag.
 </audio>
+
+<button id="audioButton" href="#" onclick="if(document.getElementById('sound').muted === true){
+    document.getElementById('sound').muted = false;
+  } else {
+    document.getElementById('sound').muted = true;
+  } return false;">
+    Play/Unplay music
+</button>

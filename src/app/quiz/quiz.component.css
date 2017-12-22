@@ -82,3 +82,8 @@
 .flagColors:hover {
     cursor: pointer;
 }
+
+#audioButton {
+    margin-left:10px;
+    display: none;
+}

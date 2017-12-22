@@ -10,11 +10,7 @@ export class LearningComponent implements OnInit {
   continent = this.route.snapshot.params['continent'];
   constructor(private route: ActivatedRoute) { }
 
-  // SVG color
-  filterColor:boolean[] = [false, false, false, false, false, false];
-  currentColorID:number;
-  currentColor:string = "white";
-  //
+  anthem_file:string = "assets/audio/Austria.mp3";
 
   ngOnInit() {
     console.log(this.continent);
@@ -24,19 +20,17 @@ export class LearningComponent implements OnInit {
 
   }
 
-  pickColor(): void{  
-    this.filterColor.forEach((element, index, array) => {
-        if(index == this.currentColorID) {
-            array[index] = true;
-        }
-        else {
-            array[index] = false;
-        }
-    });
+  /*setAnthem(country) {
+    this.anthem_file = "assets/audio/" + country + ".mp3";
+  }*/
+
+  setAnthem() {
+    this.anthem_file = "assets/audio/Bosnia.mp3";
+
+    this.play();
   }
 
-  colorFlag(object): void{
-      object.target.attributes['fill'].value = this.currentColor;
+  play() {
+    (<any>$("#sound-anthem")).trigger('load');
   }
-
 }

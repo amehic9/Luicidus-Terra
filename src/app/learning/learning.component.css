@@ -1,11 +1,41 @@
-.flagRect:hover {
-    /*fill: white;*/
-    cursor: pointer;
-    stroke: red;
-    stroke-width: 4;
-    stroke-linecap: round;
+
+h1 {
+    font-size: 1.75rem;
+    margin: 0 0 0.75rem 0;
 }
 
-.flagColors:hover {
-    cursor: pointer;
+.container-fluid {
+    width: 100%;
+    font-size: 1.25rem;
+    font-family: sans-serif;
+    line-height: 150%;
+    text-shadow: 0 2px 2px #b6701e;
 }
+
+.leftHalf {
+    position: relative;
+    float: left;
+    width: 70%;
+}
+
+.rightHalf {
+    position: relative;
+    float: left; 
+    width: 30%
+}
+
+.europe {
+    stroke: black;
+    stroke-width: 1px;
+    filter: drop-shadow( 0 2px 1px black );
+}
+
+.country:hover {
+    cursor: pointer;
+    opacity: 0.5;  
+    fill:deepskyblue;  
+    stroke: rgb(29, 31, 173);
+    stroke-width: 1px;
+    filter: drop-shadow( 0 2px 1px rgb(55, 29, 170) );
+}
+

@@ -65,6 +65,7 @@ export class QuizComponent implements OnInit {
       $('.flag-quiz-box').css('display', 'block');
       $('.color-flag-quiz-box').css('display', 'none');
       $('.quiz-results').css('display', 'none');
+      $('#audioButton').css('display','block');
       this.colorFlagQuiz = false;
 
       this.seconds = 0;
@@ -89,6 +90,7 @@ export class QuizComponent implements OnInit {
       $('.general-quiz-box').css('display', 'block');
       $('.color-flag-quiz-box').css('display', 'none');
       $('.quiz-results').css('display', 'none');
+      $('#audioButton').css('display','block');
       this.colorFlagQuiz = false;
 
       this.seconds = 0;
@@ -106,12 +108,14 @@ export class QuizComponent implements OnInit {
   }
 
   startColorFlagsQuiz() {
+    this.playAudio();
     setTimeout(() => {
       $('.time').css('display', 'block');
       $('.color-flag-quiz-box').css('display', 'block');
       $('.flag-quiz-box').css('display', 'none');
       $('.general-quiz-box').css('display', 'none');
       $('.quiz-results').css('display', 'none');
+      $('#audioButton').css('display','block');
       this.colorFlagQuiz = true;
 
       this.seconds = 0;
@@ -194,6 +198,7 @@ export class QuizComponent implements OnInit {
 
   atQuizEnd() {
     this.stopAudio();
+    $('#audioButton').css('display','none');
     $('.time').css('display', 'none');
     $('.flag-quiz-box, .general-quiz-box, .color-flag-quiz-box').css('display', 'none');
     this.step = 1;
@@ -234,5 +239,4 @@ export class QuizComponent implements OnInit {
   stopAudio(){
     (<any>$("#sound"))[0].pause();
   }
-
 }
