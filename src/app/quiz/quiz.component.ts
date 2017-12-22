@@ -58,6 +58,7 @@ export class QuizComponent implements OnInit {
   }
 
   startFlagsQuiz() {
+    this.playAudio();
     setTimeout(() => {
       $('.time').css('display', 'block');
       $('.general-quiz-box').css('display', 'none');
@@ -81,6 +82,7 @@ export class QuizComponent implements OnInit {
   }
 
   startGeneralQuiz() {
+    this.playAudio();
     setTimeout(() => {
       $('.time').css('display', 'block');
       $('.flag-quiz-box').css('display', 'none');
@@ -191,6 +193,7 @@ export class QuizComponent implements OnInit {
   }
 
   atQuizEnd() {
+    this.stopAudio();
     $('.time').css('display', 'none');
     $('.flag-quiz-box, .general-quiz-box, .color-flag-quiz-box').css('display', 'none');
     this.step = 1;
@@ -222,6 +225,14 @@ export class QuizComponent implements OnInit {
       } else {
         this.flag_colors[2] = this.currentColor;
       }
+  }
+
+  playAudio(){
+    (<any>$("#sound")).trigger('play')
+  }
+
+  stopAudio(){
+    (<any>$("#sound"))[0].pause();
   }
 
 }
