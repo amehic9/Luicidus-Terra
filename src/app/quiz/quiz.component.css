@@ -32,6 +32,16 @@
     display: none;
 }
 
+@media only screen and (max-width: 550px) {
+    .flag-quiz-box, .general-quiz-box, .color-flag-quiz-box{
+        width: 100%;
+    }
+    .flag-option {
+        width: 150px;
+        height: 100px;
+    }
+}
+
 .flag-quiz-question {
     margin-bottom: 30px;
     padding-top: 15px;

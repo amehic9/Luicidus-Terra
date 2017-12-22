@@ -1,3 +1,37 @@
 <div class="container-fluid">
-  <h3 class="text-center">User page</h3>
+
+  <div class="user-box center-block text-center">
+    <div *ngIf="mode == 'user'">
+      <h3 class="title">User information</h3>
+      <p>Name: {{user.name}}</p>
+      <p>Surname: {{user.surname}}</p>
+      <p>City: {{user.city}}</p>
+      <p>Country: {{user.country}}</p>
+      <button (click)="mode = 'edit'" class="edit-info-button center-block btn btn-default btn-lg">Edit info</button>
+    </div>
+    
+    <div id="edit-user-mode" *ngIf="mode == 'edit'">
+        <div class="margin-bottom-20 padding-top-50">
+          <p class="margin-bottom-4">Name</p>
+          <input type="text" [(ngModel)]="userForEdit.name">
+        </div>
+        <div class="margin-bottom-20">
+          <p class="margin-bottom-4">Surname</p>
+          <input type="text" [(ngModel)]="userForEdit.surname">
+        </div>
+        <div class="margin-bottom-20">
+          <p class="margin-bottom-4">City</p>
+          <input type="text" [(ngModel)]="userForEdit.city">
+        </div>
+        <div class="margin-bottom-20">
+          <p class="margin-bottom-4">Country</p>
+          <input type="text" [(ngModel)]="userForEdit.country">
+        </div>
+        <button (click)="mode = 'user'; cancelUserEdit();" class="center-block btn btn-default btn-lg">Cancel</button>
+        <button (click)="mode = 'user'; saveInformation();" class="center-block btn btn-default btn-lg">Save</button>
+    </div>
+    
+    <div id="mapid"></div>
+  </div>
+
 </div>

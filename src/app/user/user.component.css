@@ -1,0 +1,62 @@
+.center-element {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+    margin: 0 0 auto;
+    width: 100%;
+}
+
+.edit-info-button {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+#edit-user-mode {
+    margin-top: 50px;
+    display: inline-block;
+}
+
+#mapid {
+    height: 300px;
+    margin: 20px;
+}
+
+.margin-bottom-4 {
+    margin-bottom: 4px;
+}
+
+.margin-bottom-20 {
+    margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 550px) {
+    .user-box {
+        width: 100%;
+    }
+}
+
+.padding-top-50 {
+    padding-top: 50px;
+}
+
+.title {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.user-box {
+    box-shadow: 0 0 46px -19px rgba(0,0,0,.64);
+    min-height: 500px;
+    width: 550px;
+}
+
+.user-box input{
+    border: 1px solid lightgray;
+    height: 32px;
+    padding-left: 10px;
+    width: 250px;
+}
