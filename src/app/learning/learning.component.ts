@@ -20,17 +20,20 @@ export class LearningComponent implements OnInit {
 
   }
 
-  /*setAnthem(country) {
-    this.anthem_file = "assets/audio/" + country + ".mp3";
-  }*/
 
-  setAnthem() {
-    this.anthem_file = "assets/audio/Bosnia.mp3";
+  setCountry(country) {
+    this.setAnthem(country);
+  }
+
+
+  setAnthem(country) {
+    this.anthem_file = "assets/audio/" + country + ".mp3";
 
     this.play();
   }
 
   play() {
     (<any>$("#sound-anthem")).trigger('load');
+    (<any>$("#sound-anthem")).trigger('play');
   }
 }
