@@ -9,7 +9,12 @@ h1 {
     font-size: 1.25rem;
     font-family: sans-serif;
     line-height: 150%;
-    text-shadow: 0 2px 2px #b6701e;
+    /*text-shadow: 0 1px 1px #b6701e;*/
+    /*text-shadow: 0 1px 1px #000000;*/
+}
+
+.country-element {
+    font-weight: bold;
 }
 
 .leftHalf {
@@ -37,5 +42,11 @@ h1 {
     stroke: rgb(29, 31, 173);
     stroke-width: 1px;
     filter: drop-shadow( 0 2px 1px rgb(55, 29, 170) );
+}
+
+.countryImage {
+    width: 250px;
+    height: 150px;
+    box-shadow: 0 0 46px -19px rgba(0,0,0,.64);
 }
 

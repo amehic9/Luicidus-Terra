@@ -13,6 +13,8 @@ export class LearningComponent implements OnInit {
 
   countryInfo;
   curret_country:string;
+  languages:string = "";
+  regionalBlocks:string = "";
 
   anthem_file:string = "assets/audio/Austria.mp3";
 
@@ -24,6 +26,10 @@ export class LearningComponent implements OnInit {
           this.countryInfo = [];
 
           this.countryInfo = <any>responseJson[0];
+
+          this.setLanguages();
+          this.setAnthem();
+          this.setRegionalBlocks();
 
           //window.alert(this.countryInfo.name);
         }
@@ -37,26 +43,33 @@ export class LearningComponent implements OnInit {
     // https://github.com/fayder/restcountriess
   }
 
-
   ngOnInit() {
     console.log(this.continent);
   }
 
-  showEuropePage() {
-
-  }
-
-
   setCountry(country) {
-    this.setAnthem(country);
+    this.curret_country = country;
+    this.getCountries();
   }
 
+  setLanguages() {
+    this.languages = "";
 
-  setAnthem(country) {
-    this.anthem_file = "assets/audio/" + country + ".mp3";
-    this.curret_country = country;
+    this.countryInfo.languages.forEach(element => {
+      this.languages = this.languages.concat(element.name + " ( " + element.nativeName + " ) , ");
+    });
+  }
 
-    this.getCountries();
+  setRegionalBlocks() {
+    this.regionalBlocks = "";
+
+    this.countryInfo.regionalBlocs.forEach(element => {
+      this.regionalBlocks = this.regionalBlocks.concat(element.name + " ( " + element.acronym + " )");
+    });
+  }
+
+  setAnthem() {
+    this.anthem_file = "assets/audio/" + this.curret_country + ".mp3";
 
     this.play();
   }
