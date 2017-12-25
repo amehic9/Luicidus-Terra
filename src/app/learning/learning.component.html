@@ -1,23 +1,29 @@
 <div class="container-fluid">
 
   <header>
-    <h3 class="text-center">Learning page</h3>
+    <h3 class="text-center">Learning Center</h3>
 
     <br><br>
-    
-    <p> Please choose the correct colors for the flag of the following country "PLACEHOLDER". </p>
-    <p> Note: Emblems and flag segment proportions are ignored for simplicity </p>
   </header>
 
-  <nav>
-
+  <nav class="nav">
+      <ul>
+          <li class="home"> <a id="home" (click) = "this.setActiveNav('home');"> Home </a> </li>
+          <li class="tutorials"> <a id="europe" (click) = "this.setActiveNav('europe');"> Let's Learn Europe </a> </li>
+          <li class="about"> <a id="continents" (click) = "this.setActiveNav('continents');"> All About Continents </a> </li>
+          <li class="news"> <a id="statistics" (click) = "this.setActiveNav('statistics');"> Wordly Statistics </a> </li>
+        </ul>
   </nav>
 
   <hr>
 
   <section class="leftHalf">
 
-    <article>
+  <article id="homeArticle" class="main-article">
+    This is the home Article.
+  </article>
+
+  <article id="europeArticle" class="main-article">
 
     <svg class="europe" baseprofile="tiny" fill="#ececec" height="684" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".1" version="1.2" viewbox="0 0 1000 684" width="1000" xmlns="http://www.w3.org/2000/svg">
       <path (click) = "setCountry('Albania');" class="country" d="M654.7 528.1l0.5 0.4 2 2.9 1.4 0.5 1.9 1.3 1.4 3.2 0.1 2.2-0.5 2.6 0.3 2.1-0.8 0.8 0.7 2 0.2 1.9 1.2 2.2 1.2 1.1 1.3 2.4 1.6-0.2 1.3 1.1 0 1.1 1.1 1.8-0.8 2.6-1.7 0.8-1.2 3.1-0.3 2-0.6 0.5-1.9 0.3-1.7 1.3 1 2.2-0.9 0.7-0.3 1.5-0.7 0.7-2.7-0.9-0.7-2.5-1.7-2.7-4.9-2.6-1.2-1.1 0.4-1.5-0.1-1.4-1.4-2.4 0.3-2.6 0.8-2.2-0.3-2.7 0.1-2.1-0.7-2.9 0.5-2.1 0.9-1.3-0.2-2.2-1.5-1.1-1.6-0.2 0-3.1-0.3-0.6 1.7 0-1.7-2.8 3.2-5.3 1.1 0.3 0.8 2.1 3.4-1.2z" id="AL" name="Albania">
@@ -117,43 +123,93 @@
       <circle cx="521" cy="266.6" id="2">
       </circle>
     </svg>
-    
+  
   </article>
+
+  <article id="continentsArticle" class="greenboard" >
+      <p class="greenboard-text" > Lorem ipsum dolor sit amet, consectetur adipiscing elit. Falli igitur possumus.
+          Torquatus, is qui consul cum Cn. Nos commodius agimus. Memini me adesse P. </p>
+  </article>
+
+  <article id="statisticsArticle" class="main-article">
+    <p> This is the statistics Article </p>
+  </article>
+
 </section>
 
 <aside class="rightHalf">
-  <p> <span class="country-element"> Country name: </span> {{this.countryInfo.name}} </p>
-  <p> <span class="country-element"> Native name: </span> {{this.countryInfo.nativeName}} </p>
-  <p> <span class="country-element"> Alternative full name: </span> {{this.countryInfo.altSpellings[2]}} </p>
-  <br>
 
-  <img class="countryImage" src="{{this.countryInfo.flag}}" />
-  <br> <br>
+  <article id="homeArticleAside">
+    Home aside.
+  </article>
 
-  <p> <span class="country-element"> Capital: </span> {{this.countryInfo.capital}} </p>
-  <p> <span class="country-element"> Region: </span> {{this.countryInfo.region}} </p>
-  <p> <span class="country-element"> Subregion: </span> {{this.countryInfo.subregion}} </p>
-  <br>
+  <article id="europeArticleAside">
+    <p> <span class="country-element"> Country name: </span> {{this.countryInfo.name}} </p>
+    <p> <span class="country-element"> Native name: </span> {{this.countryInfo.nativeName}} </p>
+    <p> <span class="country-element"> Alternative full name: </span> {{this.countryInfo.altSpellings[2]}} </p>
+    <br>
+  
+    <img class="countryImage" src="{{this.countryInfo.flag}}" />
+    <br> <br>
+  
+    <p> <span class="country-element"> Capital: </span> {{this.countryInfo.capital}} </p>
+    <p> <span class="country-element"> Region: </span> {{this.countryInfo.region}} </p>
+    <p> <span class="country-element"> Subregion: </span> {{this.countryInfo.subregion}} </p>
+    <br>
+  
+    <p> <span class="country-element"> Population: </span> {{this.countryInfo.population}} </p>
+    <p> <span class="country-element"> Demonym: </span> {{this.countryInfo.demonym}} </p>
+    <p> <span class="country-element"> Area (km2): </span> {{this.countryInfo.area}} </p>
+    <br>
+  
+    <p> <span class="country-element"> Latitude and Longitude: </span> {{this.countryInfo.latlng[0]}} , {{this.countryInfo.latlng[1]}} </p>
+    <p> <span class="country-element"> Timezone: </span> {{this.countryInfo.timezones[0]}} </p>
+    <p> <span class="country-element"> Gini index: </span> {{this.countryInfo.gini}} </p>
+    <br>
+  
+    <p> <span class="country-element"> Currency: </span> {{this.countryInfo.currencies[0].name}} - {{this.countryInfo.currencies[0].code}} </p>
+    <p> <span class="country-element"> Official languages: </span> {{this.languages}} </p>
+    <p> <span class="country-element"> Regional blocks: </span> {{this.regionalBlocks}} </p>
+    <br>
+  
+    <audio id="sound-anthem" controls>
+      <source id="sound-anthem-mpeg" src="{{anthem_file}}" type="audio/mpeg">
+      Your browser does not support the audio tag.
+    </audio>
+  </article>
 
-  <p> <span class="country-element"> Population: </span> {{this.countryInfo.population}} </p>
-  <p> <span class="country-element"> Demonym: </span> {{this.countryInfo.demonym}} </p>
-  <p> <span class="country-element"> Area (km2): </span> {{this.countryInfo.area}} </p>
-  <br>
+  <article id="continentsArticleAside">
+    <p class = "country-element"> Please pick the continent you would like to know more about: </p>
 
-  <p> <span class="country-element"> Latitude and Longitude: </span> {{this.countryInfo.latlng[0]}} - {{this.countryInfo.latlng[1]}} </p>
-  <p> <span class="country-element"> Timezone: </span> {{this.countryInfo.timezones[0]}} </p>
-  <p> <span class="country-element"> Gini index: </span> {{this.countryInfo.gini}} </p>
-  <br>
+    <div class="select dropDown-continents" tabindex="1">
+        <input class="selectopt" name="test" type="radio" id="opt1" checked>
+        <label for="opt1" class="option"> North America </label>
 
-  <p> <span class="country-element"> Currency: </span> {{this.countryInfo.currencies[0].name}} - {{this.countryInfo.currencies[0].code}} </p>
-  <p> <span class="country-element"> Official languages: </span> {{this.languages}} </p>
-  <p> <span class="country-element"> Regional blocks: </span> {{this.regionalBlocks}} </p>
-  <br>
+        <input class="selectopt" name="test" type="radio" id="opt2">
+        <label for="opt2" class="option"> South America </label>
 
-  <audio id="sound-anthem" controls>
-    <source id="sound-anthem-mpeg" src="{{anthem_file}}" type="audio/mpeg">
-    Your browser does not support the audio tag.
-  </audio>
+        <input class="selectopt" name="test" type="radio" id="opt3">
+        <label for="opt3" class="option"> Antarctica </label>
+
+        <input class="selectopt" name="test" type="radio" id="opt4">
+        <label for="opt4" class="option"> Australia </label>
+  
+        <input class="selectopt" name="test" type="radio" id="opt5">
+        <label for="opt5" class="option"> Asia </label>
+  
+        <input class="selectopt" name="test" type="radio" id="opt6">
+        <label for="opt6" class="option"> Africa </label>
+  
+        <input class="selectopt" name="test" type="radio" id="opt7">
+        <label for="opt7" class="option"> Europe </label>
+    </div>
+  </article>
+
+  <article id="statisticsArticleAside">
+    Statistics aside.
+  </article>
+
 </aside>
 
 </div>
+

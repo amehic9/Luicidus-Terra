@@ -18,6 +18,9 @@ export class LearningComponent implements OnInit {
 
   anthem_file:string = "assets/audio/Austria.mp3";
 
+  // Current active sub-menu
+  activeMenu:string = "";
+
   getCountries() {
     this.getCountriesJson()
       .subscribe(
@@ -44,7 +47,8 @@ export class LearningComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.continent);
+    $("#home").toggleClass('active');
+    this.activeMenu = "#home";
   }
 
   setCountry(country) {
@@ -78,4 +82,16 @@ export class LearningComponent implements OnInit {
     (<any>$("#sound-anthem")).trigger('load');
     (<any>$("#sound-anthem")).trigger('play');
   }
+
+  setActiveNav(object) {
+    $(this.activeMenu).toggleClass('active');
+
+    $("#"+object+"").toggleClass('active');
+
+    $("article[id ^= " + this.activeMenu.substr(1) + "]").css('display', 'none');
+    $("article[id ^= " + object + "]").css('display', 'block');
+
+    this.activeMenu =  "#" + object + "";
+  }
+
 }
