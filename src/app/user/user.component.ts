@@ -49,9 +49,7 @@ export class UserComponent implements OnInit {
             id: 'mapbox.streets',
             accessToken: 'your.mapbox.access.token'
           }).addTo(mymap);
-          let marker = L.marker([lat, lon]).addTo(mymap)
-          .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-          .openPopup();
+          let marker = L.marker([lat, lon]).addTo(mymap);
 
           marker.dragging.enable();
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Http } from '@angular/http';
 
@@ -33,6 +33,11 @@ export class QuizComponent implements OnInit {
     //this.getQuestions();
   }
 
+  ngOnDestroy() {
+    console.log('destroy!');
+    this.atQuizEnd();
+  }
+
   getQuestions() {
     this.getQuestionsJson()
       .subscribe(
@@ -58,8 +63,9 @@ export class QuizComponent implements OnInit {
   }
 
   startFlagsQuiz() {
-    this.playAudio();
     setTimeout(() => {
+      $('.quiz-quiz').css('display', 'block');
+      this.playAudio();
       $('.time').css('display', 'block');
       $('.general-quiz-box').css('display', 'none');
       $('.flag-quiz-box').css('display', 'block');
@@ -83,8 +89,9 @@ export class QuizComponent implements OnInit {
   }
 
   startGeneralQuiz() {
-    this.playAudio();
     setTimeout(() => {
+      $('.quiz-quiz').css('display', 'block');
+      this.playAudio();
       $('.time').css('display', 'block');
       $('.flag-quiz-box').css('display', 'none');
       $('.general-quiz-box').css('display', 'block');
@@ -108,8 +115,9 @@ export class QuizComponent implements OnInit {
   }
 
   startColorFlagsQuiz() {
-    this.playAudio();
     setTimeout(() => {
+      $('.quiz-quiz').css('display', 'block');
+      this.playAudio();
       $('.time').css('display', 'block');
       $('.color-flag-quiz-box').css('display', 'block');
       $('.flag-quiz-box').css('display', 'none');
@@ -204,6 +212,7 @@ export class QuizComponent implements OnInit {
     this.step = 1;
     clearInterval(this.cancel);
     $('.quiz-results').css('display', 'block');
+    $('.quiz-quiz').css('display', 'none');
   }
 
   // color-flag
@@ -237,6 +246,8 @@ export class QuizComponent implements OnInit {
   }
 
   stopAudio(){
-    (<any>$("#sound"))[0].pause();
+    if((<any>$("#sound"))[0]) {
+      (<any>$("#sound"))[0].pause();
+    }
   }
 }
