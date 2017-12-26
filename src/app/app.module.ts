@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import * as $ from 'jquery';
 
+import {ImageZoomModule} from 'angular2-image-zoom';
+
 const appRoutes: Routes = [
   //{ path: 'learning/:continent', component: LearningComponent },
   { path: 'learning', component: LearningComponent },
@@ -29,7 +31,8 @@ const appRoutes: Routes = [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     HttpModule,
-    FormsModule
+    FormsModule,
+    ImageZoomModule
   ],
   bootstrap: [AppComponent]
 })

@@ -7,6 +7,7 @@ import { Http } from '@angular/http';
   templateUrl: './learning.component.html',
   styleUrls: ['./learning.component.css']
 })
+
 export class LearningComponent implements OnInit {
   continent = this.route.snapshot.params['continent'];
   constructor(private route: ActivatedRoute,  private http: Http) { }
@@ -93,5 +94,5 @@ export class LearningComponent implements OnInit {
 
     this.activeMenu =  "#" + object + "";
   }
-
+  
 }
