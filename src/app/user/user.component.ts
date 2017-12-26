@@ -23,6 +23,12 @@ export class UserComponent implements OnInit {
     country: ""
   }
   mode = "user";
+  flagsQuizCorrectAnswers;
+  generalQuizCorrectAnswers;
+  colorQuizCorrectAnswers;
+  totalFlagsQuestions;
+  totalGeneralQuestions;
+  totalColorQuestions;
 
   constructor() { }
 
@@ -38,6 +44,7 @@ export class UserComponent implements OnInit {
       this.userForEdit.country = localStorage.getItem("country");
       lat = localStorage.getItem("lat");
       lon = localStorage.getItem("lon");
+      this.getQuizHistory();
     }
     setTimeout(() =>{
       
@@ -49,9 +56,7 @@ export class UserComponent implements OnInit {
             id: 'mapbox.streets',
             accessToken: 'your.mapbox.access.token'
           }).addTo(mymap);
-          let marker = L.marker([lat, lon]).addTo(mymap)
-          .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-          .openPopup();
+          let marker = L.marker([lat, lon]).addTo(mymap);
 
           marker.dragging.enable();
 
@@ -64,6 +69,47 @@ export class UserComponent implements OnInit {
           });
         }, 500);
     }, 500);
+  }
+
+  getQuizHistory() {
+    if (localStorage.getItem("flags-quiz-correct-answers")) {
+    this.flagsQuizCorrectAnswers = parseInt(localStorage.getItem("flags-quiz-correct-answers"));
+    } 
+    else {
+      this.flagsQuizCorrectAnswers = 0;
+    }
+    if (localStorage.getItem("general-quiz-correct-answers")) {
+    this.generalQuizCorrectAnswers = parseInt(localStorage.getItem("general-quiz-correct-answers"));
+    } 
+    else {
+      this.generalQuizCorrectAnswers = 0;
+    }
+    if (localStorage.getItem("color-quiz-correct-answers")) {
+    this.colorQuizCorrectAnswers = parseInt(localStorage.getItem("color-quiz-correct-answers"));
+    } 
+    else {
+      this.colorQuizCorrectAnswers = 0;
+    }
+  
+
+    if (localStorage.getItem("flags-total-answers")) {
+    this.totalFlagsQuestions = parseInt(localStorage.getItem("flags-total-answers"));
+    }
+    else {
+    this.totalFlagsQuestions = localStorage.getItem("flags-total-answers");
+    }
+    if (localStorage.getItem("general-total-answers")) {
+    this.totalGeneralQuestions = parseInt(localStorage.getItem("general-total-answers"));
+    }
+    else {
+    this.totalGeneralQuestions = localStorage.getItem("general-total-answers");
+    }
+    if (localStorage.getItem("color-total-answers")) {
+    this.totalColorQuestions = parseInt(localStorage.getItem("color-total-answers"));
+    }
+    else {
+    this.totalColorQuestions = localStorage.getItem("color-total-answers");
+    }
   }
 
   showPosition(position) {

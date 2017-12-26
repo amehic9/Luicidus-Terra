@@ -221,6 +221,10 @@ h1 {
     background:#666;
   }
 
+  .remove-paddinh-left-right {
+    padding-left: 0;
+    padding-right: 0;
+  }
 
 
 

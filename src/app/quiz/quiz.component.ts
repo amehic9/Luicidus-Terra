@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Http } from '@angular/http';
 
@@ -18,6 +18,13 @@ export class QuizComponent implements OnInit {
   step = 1;
   answers = [];
   correctAnswers = 0;
+  flagsQuizCorrectAnswers;
+  generalQuizCorrectAnswers;
+  colorQuizCorrectAnswers;
+  totalFlagsQuestions;
+  totalGeneralQuestions;
+  totalColorQuestions;
+  quizEnded = false;
 
   // color-flag
   flag_colors:string[] = ["black", "black", "black"];
@@ -30,7 +37,54 @@ export class QuizComponent implements OnInit {
   constructor(private route: ActivatedRoute, private http: Http) { }
 
   ngOnInit() {
-    //this.getQuestions();
+    this.getQuizHistory();
+  }
+
+  getQuizHistory() {
+    if (localStorage.getItem("flags-quiz-correct-answers")) {
+    this.flagsQuizCorrectAnswers = parseInt(localStorage.getItem("flags-quiz-correct-answers"));
+    } 
+    else {
+      this.flagsQuizCorrectAnswers = 0;
+    }
+    if (localStorage.getItem("general-quiz-correct-answers")) {
+    this.generalQuizCorrectAnswers = parseInt(localStorage.getItem("general-quiz-correct-answers"));
+    } 
+    else {
+      this.generalQuizCorrectAnswers = 0;
+    }
+    if (localStorage.getItem("color-quiz-correct-answers")) {
+    this.colorQuizCorrectAnswers = parseInt(localStorage.getItem("color-quiz-correct-answers"));
+    } 
+    else {
+      this.colorQuizCorrectAnswers = 0;
+    }
+  
+
+    if (localStorage.getItem("flags-total-answers")) {
+    this.totalFlagsQuestions = parseInt(localStorage.getItem("flags-total-answers"));
+    }
+    else {
+    this.totalFlagsQuestions = localStorage.getItem("flags-total-answers");
+    }
+    if (localStorage.getItem("general-total-answers")) {
+    this.totalGeneralQuestions = parseInt(localStorage.getItem("general-total-answers"));
+    }
+    else {
+    this.totalGeneralQuestions = localStorage.getItem("general-total-answers");
+    }
+    if (localStorage.getItem("color-total-answers")) {
+    this.totalColorQuestions = parseInt(localStorage.getItem("color-total-answers"));
+    }
+    else {
+    this.totalColorQuestions = localStorage.getItem("color-total-answers");
+    }
+  }
+
+  ngOnDestroy() {
+    if (!this.quizEnded) {
+      this.atQuizEnd();
+    }
   }
 
   getQuestions() {
@@ -58,8 +112,10 @@ export class QuizComponent implements OnInit {
   }
 
   startFlagsQuiz() {
-    this.playAudio();
+    this.quizEnded = false;
     setTimeout(() => {
+      $('.quiz-quiz').css('display', 'block');
+      this.playAudio();
       $('.time').css('display', 'block');
       $('.general-quiz-box').css('display', 'none');
       $('.flag-quiz-box').css('display', 'block');
@@ -83,8 +139,10 @@ export class QuizComponent implements OnInit {
   }
 
   startGeneralQuiz() {
-    this.playAudio();
+    this.quizEnded = false;
     setTimeout(() => {
+      $('.quiz-quiz').css('display', 'block');
+      this.playAudio();
       $('.time').css('display', 'block');
       $('.flag-quiz-box').css('display', 'none');
       $('.general-quiz-box').css('display', 'block');
@@ -108,8 +166,10 @@ export class QuizComponent implements OnInit {
   }
 
   startColorFlagsQuiz() {
-    this.playAudio();
+    this.quizEnded = false;
     setTimeout(() => {
+      $('.quiz-quiz').css('display', 'block');
+      this.playAudio();
       $('.time').css('display', 'block');
       $('.color-flag-quiz-box').css('display', 'block');
       $('.flag-quiz-box').css('display', 'none');
@@ -197,6 +257,7 @@ export class QuizComponent implements OnInit {
   }
 
   atQuizEnd() {
+    this.quizEnded = true;
     this.stopAudio();
     $('#audioButton').css('display','none');
     $('.time').css('display', 'none');
@@ -204,6 +265,20 @@ export class QuizComponent implements OnInit {
     this.step = 1;
     clearInterval(this.cancel);
     $('.quiz-results').css('display', 'block');
+    $('.quiz-quiz').css('display', 'none');
+    if (this.quizType === 'flags') {
+      localStorage.setItem('flags-quiz-correct-answers', this.flagsQuizCorrectAnswers + this.correctAnswers);
+      localStorage.setItem('flags-total-answers', this.totalFlagsQuestions + 10);
+    }
+    else if (this.quizType === 'general') {
+      localStorage.setItem('general-quiz-correct-answers', this.generalQuizCorrectAnswers + this.correctAnswers);
+      localStorage.setItem('general-total-answers', this.totalGeneralQuestions + 10);
+    }
+    else if (this.quizType === 'color_flags') {
+      localStorage.setItem('color-quiz-correct-answers', this.colorQuizCorrectAnswers + this.correctAnswers);
+      localStorage.setItem('color-total-answers', this.totalColorQuestions + 10);
+    }
+    this.getQuizHistory();
   }
 
   // color-flag
@@ -237,6 +312,8 @@ export class QuizComponent implements OnInit {
   }
 
   stopAudio(){
-    (<any>$("#sound"))[0].pause();
+    if((<any>$("#sound"))[0]) {
+      (<any>$("#sound"))[0].pause();
+    }
   }
 }

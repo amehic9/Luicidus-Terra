@@ -119,6 +119,16 @@
     <button (click)="quizType = 'color_flags'; this.getQuestions(); startColorFlagsQuiz();" class="center-block btn btn-default btn-lg">Start color flag quiz</button>
     <button (click)="quizType = 'general'; this.getQuestions(); startGeneralQuiz();" class="center-block btn btn-default btn-lg">Start general quiz</button>
   </div>
+
+  <button id="audioButton" class="margin-top-10 center-block btn btn-default" href="#" onclick="if(document.getElementById('sound').muted === true){
+      document.getElementById('sound').muted = false;
+    } else {
+      document.getElementById('sound').muted = true;
+    } return false;">
+      Play/Unplay music
+  </button>
+
+  <button *ngIf="quizStarted" (click)="atQuizEnd();" class="quiz-quiz margin-top-10 center-block btn btn-default">Quit quiz</button>
 </div>
 
 <audio id="sound">
@@ -126,11 +136,3 @@
   <source src="assets/audio/quizsound.mp3" type="audio/mpeg">
   Your browser does not support the audio tag.
 </audio>
-
-<button id="audioButton" href="#" onclick="if(document.getElementById('sound').muted === true){
-    document.getElementById('sound').muted = false;
-  } else {
-    document.getElementById('sound').muted = true;
-  } return false;">
-    Play/Unplay music
-</button>
