@@ -3,13 +3,10 @@
   <div class="user-box center-block text-center">
     <div *ngIf="mode == 'user'">
       <h3 class="title">User information</h3>
-      <div (drop)="dropImage($event);" class="center-block drop-image">Drop image here</div>
-      <img class="center-block image-preview" />
       <p>Name: {{user.name}}</p>
       <p>Surname: {{user.surname}}</p>
       <p>City: {{user.city}}</p>
       <p>Country: {{user.country}}</p>
-      <p>Birthday: {{user.birthday}}</p>
       <p>Flags quiz: {{flagsQuizCorrectAnswers}} / {{totalFlagsQuestions}}</p>
       <p>General quiz: {{generalQuizCorrectAnswers}} / {{totalGeneralQuestions}}</p>
       <p>Color quiz: {{colorQuizCorrectAnswers}} / {{totalColorQuestions}}</p>
@@ -33,17 +30,8 @@
           <p class="margin-bottom-4">Country</p>
           <input type="text" [(ngModel)]="userForEdit.country">
         </div>
-        <div class="margin-bottom-20">
-          <p class="margin-bottom-4">Birth</p>
-          <input type="date" id="birthday">
-        </div>
-        <div class="margin-bottom-20">
-          <p class="margin-bottom-4">Profle color</p>
-          <input type="color" id="colorprofile">
-        </div>
-        
-        <button (click)="mode = 'user'; cancelUserEdit();" class="user-edit-buttons btn btn-default btn-lg">Cancel</button>
-        <button (click)="mode = 'user'; saveInformation();" class="user-edit-buttons btn btn-default btn-lg">Save</button>
+        <button (click)="mode = 'user'; cancelUserEdit();" class="center-block btn btn-default btn-lg">Cancel</button>
+        <button (click)="mode = 'user'; saveInformation();" class="center-block btn btn-default btn-lg">Save</button>
     </div>
     
     <div id="mapid"></div>

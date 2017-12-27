@@ -14,15 +14,13 @@ export class UserComponent implements OnInit {
     name: "",
     surname: "",
     city: "",
-    country: "",
-    birthday: null
+    country: ""
   }
   userForEdit = {
     name: "",
     surname: "",
     city: "",
-    country: "",
-    birthday: null
+    country: ""
   }
   mode = "user";
   flagsQuizCorrectAnswers;
@@ -35,51 +33,18 @@ export class UserComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    
-    window.addEventListener("dragover",function(e){
-      e.preventDefault();
-    },false);
-    window.addEventListener("drop",function(e){
-      e.preventDefault();
-    },false);
-
     if (typeof(Storage) !== "undefined") {
       this.user.name = localStorage.getItem("name");
       this.user.surname = localStorage.getItem("surname");
       this.user.city = localStorage.getItem("city");
       this.user.country = localStorage.getItem("country");
-      this.user.birthday = localStorage.getItem("birthday");
       this.userForEdit.name = localStorage.getItem("name");
       this.userForEdit.surname = localStorage.getItem("surname");
       this.userForEdit.city = localStorage.getItem("city");
       this.userForEdit.country = localStorage.getItem("country");
-      this.userForEdit.birthday = localStorage.getItem("birthday");
-      if (localStorage.getItem("color")) {
-        $("#colorprofile").val(localStorage.getItem("color"));
-        $(".user-box").css("border", "1px solid " + localStorage.getItem("color"));
-      }
-      if (localStorage.getItem("lat")) {
-        lat = localStorage.getItem("lat");
-      }
-      else {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(this.showPosition);
-        }
-      }
-      if (localStorage.getItem("lon")) {
-        lon = localStorage.getItem("lon");
-      }
-      else {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(this.showPosition);
-        }
-      }
+      lat = localStorage.getItem("lat");
+      lon = localStorage.getItem("lon");
       this.getQuizHistory();
-    }
-    else {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(this.showPosition);
-      }
     }
     setTimeout(() =>{
       
@@ -106,39 +71,6 @@ export class UserComponent implements OnInit {
     }, 500);
   }
 
-  getColor() {
-     localStorage.setItem("color", (<any> document.getElementById("colorprofile")).value);
-     $(".user-box").css("border", "1px solid " + localStorage.getItem("color"));
-  }
-
-  //dropped thumbnail
-  dropImage(event) {
-    event.preventDefault();
-    var dt = event.dataTransfer;
-    var file = dt.files[0];
-    if (this.isImage(file.name)) {
-      let imagePreview = $('.image-preview');
-      $('.image-preview').css('display', 'block');
-      $('.drop-image').css('display', 'none');
-
-      var reader = new FileReader();
-      reader.onload = function(e){
-          $(".image-preview").attr("src", (<any>e).target.result);
-      };
-      reader.readAsDataURL(file);
-    }
-
-    return false;
-  }
-
-  isImage(file) {
-    let split = file.split('.');
-    if (split[split.length - 1].toLowerCase() == 'jpg' || split[split.length - 1].toLowerCase() == 'png') {
-      return true;
-    }
-    return false;
-  }
-
   getQuizHistory() {
     if (localStorage.getItem("flags-quiz-correct-answers")) {
     this.flagsQuizCorrectAnswers = parseInt(localStorage.getItem("flags-quiz-correct-answers"));
@@ -161,22 +93,22 @@ export class UserComponent implements OnInit {
   
 
     if (localStorage.getItem("flags-total-answers")) {
-      this.totalFlagsQuestions = parseInt(localStorage.getItem("flags-total-answers"));
+    this.totalFlagsQuestions = parseInt(localStorage.getItem("flags-total-answers"));
     }
     else {
-      this.totalFlagsQuestions = 0;
+    this.totalFlagsQuestions = localStorage.getItem("flags-total-answers");
     }
     if (localStorage.getItem("general-total-answers")) {
-      this.totalGeneralQuestions = parseInt(localStorage.getItem("general-total-answers"));
+    this.totalGeneralQuestions = parseInt(localStorage.getItem("general-total-answers"));
     }
     else {
-      this.totalGeneralQuestions = 0;
+    this.totalGeneralQuestions = localStorage.getItem("general-total-answers");
     }
     if (localStorage.getItem("color-total-answers")) {
-      this.totalColorQuestions = parseInt(localStorage.getItem("color-total-answers"));
+    this.totalColorQuestions = parseInt(localStorage.getItem("color-total-answers"));
     }
     else {
-      this.totalColorQuestions = 0;
+    this.totalColorQuestions = localStorage.getItem("color-total-answers");
     }
   }
 
@@ -186,18 +118,14 @@ export class UserComponent implements OnInit {
   }
 
   saveInformation() {
-    this.userForEdit.birthday = $("#birthday").val();
     localStorage.setItem("name", this.userForEdit.name);
     localStorage.setItem("surname", this.userForEdit.surname);
     localStorage.setItem("city", this.userForEdit.city);
     localStorage.setItem("country", this.userForEdit.country);
-    localStorage.setItem("birthday", this.userForEdit.birthday);
     this.user.name = this.userForEdit.name;
     this.user.surname = this.userForEdit.surname;
     this.user.city = this.userForEdit.city;
     this.user.country = this.userForEdit.country;
-    this.user.birthday = this.userForEdit.birthday;
-    this.getColor();
   }
 
   cancelUserEdit() {
@@ -205,7 +133,6 @@ export class UserComponent implements OnInit {
     this.userForEdit.surname = this.user.surname;
     this.userForEdit.city = this.user.city;
     this.userForEdit.country = this.user.country;
-    this.userForEdit.birthday = this.user.birthday;
   }
 
 }
