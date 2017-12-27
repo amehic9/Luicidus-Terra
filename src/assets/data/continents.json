@@ -18,27 +18,27 @@
 		},
 		{
 			"name": "North America",
-			"data": "Information about Asia...",
+			"data": "Is a landmass which consists of usually called North and Central America. Northern part consists of USA and Cannada while the center is come to Mexico and other Latino countries. The earliest human inhabitants in North America were from Asia and crossed into Alaska over the Bering land bridge during an ice age. The arrival of Europeans occurred in the mid-1600s. This population is now dominant in North America.",
 			"image": "../../assets/images/north_america.svg.png"
 		},
 		{
 			"name": "South America",
-			"data": "Information about Asia...",
+			"data": "Is positioned in the southern part of the large American landmass. It is divided by the Panama cannal with the rest of America. South America is home to incredible biodiversity. South America includes the Andes Mountains which comprise the longest range of peaks in the world. It is home to the Amazon River, which passes the largest volume of water of any river in the world. The continent is home to llamas and alpacas!",
 			"image": "../../assets/images/south_america.svg.png"
 		},
 		{
 			"name": "Antartica",
-			"data": "Information about Asia...",
+			"data": "The continent of Antarctica is positioned as the southernmost land mass on Earth. The South Pole can be found here among its large permanent glaciers and frigid weather. Even though Antarctica has one of the harshest climates and most unwelcoming terrains on planet Earth, there are still nearly five thousand people that temporarily call this continent home every year. his makes Antarctica the least populated continent on Earth.",
 			"image": "../../assets/images/antartica.png"
 		},
 		{
 			"name": "Australia",
-			"data": "Information about Asia...",
+			"data": "The continent includes the mainland of the country Australia and the island regions of New Guinea, Tasmania, and Seram. Australia is the smallest major continent but is home to the sixth largest country by the same name, Australia. Australia is the most isolated continent and has been least influenced by migrations. This led to having a wide variety of animals and plants such as the kangaroo, koala, dingo, wallaby, and wombat.",
 			"image": "../../assets/images/australia.png"
 		},
 		{
 			"name": "Oceania",
-			"data": "Information about Asia...",
+			"data": "In many cases not considered a continent, its landmass is very small and consists of numerous islands. Because of their position it is hard to define them and are usually refered as a special entity, Oceania. They are located in the Pacific ocean. Australia is also sometimes referrenced in this group. The first settlers arrived between 50,000 and 30,000 years ago. The islands are ruled by a tropical rainforest and savanna climate.",
 			"image": "../../assets/images/oceania.svg.png"
 		}
 	]
