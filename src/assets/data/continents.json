@@ -3,43 +3,7 @@
 	[
 		{
 			"name": "Europe",
-			"data": "One of the smallest continents on Earth, Europe is considered a craddle of civilazation alongisde the Mesopotamia region. It is the birthplace of the Caucasian people. Europe closely packs more than 50 countries, among which is the smallest country in the world, Vatican City, and the largest, Russia. The ancient Greek and Roman civilizations flourished here, from which we get much of our learning and culture.",
-			"image": "../../assets/images/europe_original.svg.png"
-		},
-		{
-			"name": "Asia",
-			"data": "Continent which covers nearly 9% of the world's surface is the largest continent on Earth. Almost 4.5 billion people live on this continent making it also the most populated one. Asia includes the Saudi Arabia peninsula with the oil-rich countries including the United Arab Emirates and Kuwait. The continent also includes the manufacturing centers of India and Japan and Hong Kong, which is a leading banking and corporate center.",
-			"image": "../../assets/images/asia.svg.png"
-		},
-		{
-			"name": "Africa",
-			"data": "Over 1.2 billion people can call Africa home, spread accros 54 different countries. There are quite different climates on north and south side of the equator, where north is more dry and home to largest deserts and south contains many tropical forests and savannas. It is home to over 7000 species of mammals and over 100.000 species of insects. The longest river Nile (6,853km) finds its home on this continent.",
-			"image": "../../assets/images/africa.svg.png"
-		},
-		{
-			"name": "North America",
-			"data": "Information about Asia...",
-			"image": "../../assets/images/north_america.svg.png"
-		},
-		{
-			"name": "South America",
-			"data": "Information about Asia...",
-			"image": "../../assets/images/south_america.svg.png"
-		},
-		{
-			"name": "Antartica",
-			"data": "Information about Asia...",
-			"image": "../../assets/images/antartica.png"
-		},
-		{
-			"name": "Australia",
-			"data": "Information about Asia...",
-			"image": "../../assets/images/australia.png"
-		},
-		{
-			"name": "Oceania",
-			"data": "Information about Asia...",
-			"image": "../../assets/images/oceania.svg.png"
+			"data": "Information about Europe..."
 		}
 	]
 }

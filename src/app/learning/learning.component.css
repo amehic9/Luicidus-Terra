@@ -10,11 +10,8 @@ h1 {
     font-size: 1.25rem;
     font-family: sans-serif;
     line-height: 150%;
-}
-
-.remove-paddinh-left-right {
-  padding-left: 0;
-  padding-right: 0;
+    /*text-shadow: 0 1px 1px #b6701e;*/
+    /*text-shadow: 0 1px 1px #000000;*/
 }
 
 .country-element {
@@ -30,7 +27,7 @@ h1 {
 .rightHalf {
     position: relative;
     float: left; 
-    width: 30%;
+    width: 30%
 }
 
 .europe {
@@ -126,7 +123,7 @@ h1 {
     /*background:url(http://www.photo-dictionary.com/photofiles/list/461/838chalkboard.jpg);*/
     background: url("../../assets/images/blackboard-background.jpg");
     width: 800px;
-    font: 18pt 'Gloria Hallelujah';
+    font: 25pt 'Gloria Hallelujah';
     color: rgba(255,255,255,0.7);
     text-shadow:0 0 4px rgba(255,255,255,0.5);
     height: 486px;
@@ -224,12 +221,10 @@ h1 {
     background:#666;
   }
 
-  #continentImg {
-    height: 200px;
-    padding-left: 20px;
+  .remove-paddinh-left-right {
+    padding-left: 0;
+    padding-right: 0;
   }
-
-
 
 
 

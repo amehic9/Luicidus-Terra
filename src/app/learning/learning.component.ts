@@ -94,55 +94,5 @@ export class LearningComponent implements OnInit {
 
     this.activeMenu =  "#" + object + "";
   }
-
-  enterMouse() {
-    $("#continentImg").hover(
-      function(){
-          var $this = $(this);
-          $this.stop().animate({'opacity':'1.0','height':'200px','top':'0px','left':'0px'});
-      }
-    );
-  }
-
-  leaveMouse() {
-    $("#continentImg").hover(
-      function(){
-          var $this = $(this);
-          $this.stop().animate({'opacity':'0.8','height':'500px','top':'-66.5px','left':'-150px'});
-      }
-    );
-  }
-
-
-  // Continents 
-
-  current_continent:string = "";
-  continent_info;
-
-  getContinent() {
-    this.getContinentJson()
-    .subscribe(
-      response => {
-        let responseJson = response.json();
-        this.continent_info = [];
-
-        for (let i = 0; i < (<any>responseJson).continents.length; i++) {
-          if ((<any>responseJson).continents[i].name == this.current_continent) {
-            this.continent_info = (<any>responseJson).continents[i];
-          }
-        }
-
-      }
-    )
-  }
-
-  getContinentJson() {
-    return this.http.get("../../assets/data/continents.json");
-  }
-
-  setContinent(selected_continent) {
-    this.current_continent = selected_continent;
-    this.getContinent();
-  }
-
+  
 }
