@@ -7,12 +7,12 @@
   </header>
 
   <nav class="nav">
-      <ul>
-          <li class="home"> <a id="home" (click) = "this.setActiveNav('home');"> Home </a> </li>
-          <li class="tutorials"> <a id="europe" (click) = "this.setActiveNav('europe');"> Let's Learn Europe </a> </li>
-          <li class="about"> <a id="continents" (click) = "this.setActiveNav('continents');"> All About Continents </a> </li>
-          <li class="news"> <a id="statistics" (click) = "this.setActiveNav('statistics');"> Wordly Statistics </a> </li>
-        </ul>
+    <ul>
+        <li class="home"> <a id="home" (click) = "this.setActiveNav('home');"> Home </a> </li>
+        <li class="tutorials"> <a id="europe" (click) = "this.setActiveNav('europe');"> Let's Learn Europe </a> </li>
+        <li class="about"> <a id="continents" (click) = "this.setActiveNav('continents');"> All About Continents </a> </li>
+        <li class="news"> <a id="statistics" (click) = "this.setActiveNav('statistics');"> Wordly Statistics </a> </li>
+      </ul>
   </nav>
 
   <hr>
@@ -126,11 +126,17 @@
   
   </article>
 
-  <article id="continentsArticle" >
-    <div class="greenboard">
-      <p class="greenboard-text" > Lorem ipsum dolor sit amet, consectetur adipiscing elit. Falli igitur possumus.
-          Torquatus, is qui consul cum Cn. Nos commodius agimus. Memini me adesse P. </p>
-    </div>
+  <article id="continentsArticle" style="width : 100%;" >
+    <section class = "leftHalf" style="padding-left: 10px;">
+      <div class="greenboard">
+        <p class="greenboard-text" > {{this.continent_info.name}} - {{this.continent_info.data}} </p>
+      </div>
+    </section>
+
+    <section class="rightHalf" style="padding-left: 50px;">
+      <img (mouseenter) = "this.enterMouse();" (mouseleave) = "this.leaveMouse();" 
+      id="continentImg" src="{{this.continent_info.image}}" alt="" />
+    </section>
   </article>
 
   <article id="statisticsArticle" class="main-article">
@@ -180,36 +186,37 @@
     </audio>
   </article>
 
-  <article id="continentsArticleAside">
+  <article id="continentsArticleAside" style="padding-left: 50px;">
     <p class = "country-element"> Please pick the continent you would like to know more about: </p>
 
     <div class="select dropDown-continents" tabindex="1">
-        <input class="selectopt" name="test" type="radio" id="opt1" checked>
-        <label for="opt1" class="option"> North America </label>
+      <input (click) = "this.setContinent('');" class="selectopt" name="test" type="radio" id="opt0" checked>
+      <label for="opt0" class="option"> Pick a continent... </label>
 
-        <input class="selectopt" name="test" type="radio" id="opt2">
-        <label for="opt2" class="option"> South America </label>
+      <input (click) = "this.setContinent('North America');" class="selectopt" name="test" type="radio" id="opt1">
+      <label for="opt1" class="option"> North America </label>
 
-        <input class="selectopt" name="test" type="radio" id="opt3">
-        <label for="opt3" class="option"> Antarctica </label>
+      <input (click) = "this.setContinent('South America');" class="selectopt" name="test" type="radio" id="opt2">
+      <label for="opt2" class="option"> South America </label>
 
-        <input class="selectopt" name="test" type="radio" id="opt4">
-        <label for="opt4" class="option"> Australia </label>
-  
-        <input class="selectopt" name="test" type="radio" id="opt5">
-        <label for="opt5" class="option"> Asia </label>
-  
-        <input class="selectopt" name="test" type="radio" id="opt6">
-        <label for="opt6" class="option"> Africa </label>
-  
-        <input class="selectopt" name="test" type="radio" id="opt7">
-        <label for="opt7" class="option"> Europe </label>
-    </div>
+      <input (click) = "this.setContinent('Antartica');" class="selectopt" name="test" type="radio" id="opt3">
+      <label for="opt3" class="option"> Antarctica </label>
 
-    <br> <br>
-    
-    <img id="continentImg" src="../../assets/images/europe_small.svg.png"
-    imageZoom="../../assets/images/europe_original.svg.png" />
+      <input (click) = "this.setContinent('Australia');" class="selectopt" name="test" type="radio" id="opt4">
+      <label for="opt4" class="option"> Australia </label>
+
+      <input (click) = "this.setContinent('Asia');" class="selectopt" name="test" type="radio" id="opt5">
+      <label for="opt5" class="option"> Asia </label>
+
+      <input (click) = "this.setContinent('Africa');" class="selectopt" name="test" type="radio" id="opt6">
+      <label for="opt6" class="option"> Africa </label>
+
+      <input (click) = "this.setContinent('Europe');" class="selectopt" name="test" type="radio" id="opt7">
+      <label for="opt7" class="option"> Europe </label>
+
+      <input (click) = "this.setContinent('Oceania');" class="selectopt" name="test" type="radio" id="opt8">
+      <label for="opt8" class="option"> Oceania </label>
+    </div>    
   </article>
 
   <article id="statisticsArticleAside">
