@@ -12,10 +12,28 @@ export class LearningComponent implements OnInit {
   continent = this.route.snapshot.params['continent'];
   constructor(private route: ActivatedRoute,  private http: Http) { }
 
-  countryInfo;
-  curret_country:string;
-  languages:string = "";
-  regionalBlocks:string = "";
+  //countryInfo:any = [];
+  countryInfo = {
+    "name": "",
+    "nativeName": "",
+    "altSpellings": "",
+    "flag": "",
+    "capital": "",
+    "region": "",
+    "subregion": "",
+    "population": "",
+    "demonym": "",
+    "area": "",
+    "lat": "",
+    "lng": "",
+    "timezone": "",
+    "gini": "",
+    "currency_name": "",
+    "currency_code": "",
+    "languages": "",
+    "regionalBlocks": ""
+  };
+  curret_country:string = "";
 
   anthem_file:string = "assets/audio/Austria.mp3";
 
@@ -27,15 +45,41 @@ export class LearningComponent implements OnInit {
       .subscribe(
         response => {
           let responseJson = response.json();
-          this.countryInfo = [];
 
-          this.countryInfo = <any>responseJson[0];
+          for (let i = 0; i < 1; i++) {
+            this.countryInfo.name = (<any>responseJson)[i].name;
+            this.countryInfo.nativeName = (<any>responseJson)[i].nativeName;
+            this.countryInfo.altSpellings = (<any>responseJson)[i].altSpellings[2];
+            this.countryInfo.flag = (<any>responseJson)[i].flag;
+            this.countryInfo.capital = (<any>responseJson)[i].capital;
+            this.countryInfo.region = (<any>responseJson)[i].region;
+            this.countryInfo.subregion = (<any>responseJson)[i].subregion;
+            this.countryInfo.population = (<any>responseJson)[i].population;
+            this.countryInfo.demonym = (<any>responseJson)[i].demonym;
+            this.countryInfo.area = (<any>responseJson)[i].area;
+            this.countryInfo.lat = (<any>responseJson)[i].latlng[0];
+            this.countryInfo.lng = (<any>responseJson)[i].latlng[1];
+            this.countryInfo.timezone = (<any>responseJson)[i].timezones[0];
+            this.countryInfo.gini = (<any>responseJson)[i].gini;
+            this.countryInfo.currency_name = (<any>responseJson)[i].currencies[0].name;
+            this.countryInfo.currency_code = (<any>responseJson)[i].currencies[0].code;
 
-          this.setLanguages();
+            this.countryInfo.languages = "";
+            (<any>responseJson)[i].languages.forEach(element => {
+              this.countryInfo.languages = this.countryInfo.languages.concat(element.name + " ( " + element.nativeName + " ) , ");
+            });
+
+            this.countryInfo.regionalBlocks = "";
+            (<any>responseJson)[i].regionalBlocs.forEach(element => {
+              this.countryInfo.regionalBlocks = this.countryInfo.regionalBlocks.concat(element.name + " ( " + element.acronym + " )");
+            });
+          }
+
+          //this.countryInfo = <any>responseJson[0];
+
           this.setAnthem();
-          this.setRegionalBlocks();
 
-          //window.alert(this.countryInfo.name);
+          //window.alert("Click: " + this.curret_country);
         }
       )
   }
@@ -57,21 +101,6 @@ export class LearningComponent implements OnInit {
     this.getCountries();
   }
 
-  setLanguages() {
-    this.languages = "";
-
-    this.countryInfo.languages.forEach(element => {
-      this.languages = this.languages.concat(element.name + " ( " + element.nativeName + " ) , ");
-    });
-  }
-
-  setRegionalBlocks() {
-    this.regionalBlocks = "";
-
-    this.countryInfo.regionalBlocs.forEach(element => {
-      this.regionalBlocks = this.regionalBlocks.concat(element.name + " ( " + element.acronym + " )");
-    });
-  }
 
   setAnthem() {
     this.anthem_file = "assets/audio/" + this.curret_country + ".mp3";
@@ -113,11 +142,10 @@ export class LearningComponent implements OnInit {
     );
   }
 
-
   // Continents 
 
   current_continent:string = "";
-  continent_info;
+  continent_info = [];
 
   getContinent() {
     this.getContinentJson()
