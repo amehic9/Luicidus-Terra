@@ -10,43 +10,43 @@
                     "elements":
                     [
                         {
-                            "width": "40",
+                            "width": "100",
                             "text": "4444 km - Amur"
                         },
                         {
-                            "width": "60",
+                            "width": "155",
                             "text": "4700 km - Congo"
                         },
                         {
-                            "width": "80",
+                            "width": "160",
                             "text": "4880 km - Parana"
                         },
                         {
-                            "width": "100",
+                            "width": "170",
                             "text": "5410 km - Ob"
                         },
                         {
-                            "width": "120",
+                            "width": "173",
                             "text": "5464 km - Yellow River"
                         },
                         {
-                            "width": "140",
+                            "width": "182",
                             "text": "5539 km - Yenisei"
                         },
                         {
-                            "width": "160",
+                            "width": "193",
                             "text": "6275 km - Mississippi"
                         },
                         {
-                            "width": "180",
+                            "width": "195",
                             "text": "6300 km - Yangtze"
                         },
                         {
-                            "width": "200",
+                            "width": "198",
                             "text": "6853 km - Nile"
                         },
                         {
-                            "width": "220",
+                            "width": "210",
                             "text": "6992 km - Amazon"
                         }
                     ]

@@ -244,18 +244,17 @@ h1 {
     fill: #555;
   }
   
-
   .chart:hover .bar, .chart:focus .bar {
     fill: #aaa;
   }
   
   .bar:hover,
   .bar:focus {
-    fill: red !important;
+    fill: #4685d8 !important;
   }
 
   .bar:hover text, .bar:focus text {
-    fill: red;
+    fill: #4685d8;
   }
   
   figcaption {
@@ -264,6 +263,43 @@ h1 {
     margin-bottom: 20px;
   }
 
+  /* --------------------- */
+
+  .graph .labels.x-labels {
+    text-anchor: middle;
+  }
+  
+  .graph .labels.y-labels {
+    text-anchor: end;
+  }
+  
+  
+  .graph {
+    height: 600px;
+    width: 1000px;
+  }
+  
+  .graph .grid {
+    stroke: #ccc;
+    stroke-dasharray: 0;
+    stroke-width: 1;
+  }
+  
+  .labels {
+    font-size: 13px;
+  }
+  
+  .label-title {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+    fill: black;
+  }
+  
+  .data {
+    fill: red;
+    stroke-width: 1; 
+  }
 
 
 

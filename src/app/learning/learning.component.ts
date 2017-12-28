@@ -176,7 +176,7 @@ export class LearningComponent implements OnInit {
 
   /* Statistic elements */
 
-  statistic_name:string = "";
+  statistic_title:string = "";
   statistics = [];
 
   setStatistic(selected_statistics) {
@@ -185,10 +185,12 @@ export class LearningComponent implements OnInit {
       response => {
         let responseJson = response.json();
         this.statistics = [];
-        this.statistic_name = "";
+        this.statistic_title = "";
 
         for (let i = 0; i < (<any>responseJson).options.length; i++) {
           if ((<any>responseJson).options[i].statistic_name == selected_statistics) {
+            this.statistic_title = (<any>responseJson).options[i].statistics[0].title;
+            
             for (let j = 0; j < (<any>responseJson).options[i].statistics[0].elements.length; j++) {
               this.statistics.push((<any>responseJson).options[i].statistics[0].elements[j]);
             }
@@ -208,6 +210,22 @@ export class LearningComponent implements OnInit {
 
   setSomething() {
     this.setStatistic('rivers');
+  }
+
+
+  setRectY(index) {
+    let new_y = index * 20;
+    return new_y;
+  }
+
+  setTextX(statistic) {
+    let new_width = 5 + parseInt(statistic.width);
+    return new_width;
+  }
+
+  setTextY(index) {
+    let new_y = 8 + index * 20;
+    return new_y;
   }
 
 }

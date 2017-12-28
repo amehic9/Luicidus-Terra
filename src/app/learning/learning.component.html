@@ -8,7 +8,7 @@
 
   <nav class="nav">
     <ul>
-        <li class="home"> <a id="home" (click) = "this.setActiveNav('home');"> Home </a> </li>
+        <li class="home"> <a id="home" (click) = "this.setActiveNav('home');"> Ready, Set, Go </a> </li>
         <li class="tutorials"> <a id="europe" (click) = "this.setActiveNav('europe');"> Let's Learn Europe </a> </li>
         <li class="about"> <a id="continents" (click) = "this.setActiveNav('continents');"> All About Continents </a> </li>
         <li class="news"> <a id="statistics" (click) = "this.setActiveNav('statistics');"> Wordly Statistics </a> </li>
@@ -20,7 +20,63 @@
   <section class="leftHalf">
 
   <article id="homeArticle">
-    This is the home Article.
+    <p> As one small touch to start with our learning procedure, we would like to present the graph which indicates the world
+    population through different years. It is certainly a curve worthy of inspecting. </p>
+
+    <br> <br>
+
+    <svg version="1.2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="graph" aria-labelledby="title" role="img">
+      <title id="title">A line chart showing population information</title>
+
+      <g class="grid x-grid" id="xGrid">
+        <line x1="90" x2="90" y1="5" y2="371"></line>
+      </g>
+      <g class="grid y-grid" id="yGrid">
+        <line x1="90" x2="900" y1="370" y2="370"></line>
+      </g>
+
+      <g class="labels x-labels">
+        <text x="100" y="400">1500</text>
+        <text x="250" y="400">1600</text>
+        <text x="400" y="400">1700</text>
+        <text x="475" y="400">1750</text>
+        <text x="550" y="400">1800</text>
+        <text x="625" y="400">1850</text>
+        <text x="700" y="400">1900</text>
+        <text x="775" y="400">1950</text>
+        <text x="850" y="400">2000</text>
+        <text x="900" y="400">2018</text>
+        <text x="500" y="440" class="label-title">Year</text>
+      </g>
+
+      <g class="labels y-labels">
+        <text x="80" y="15">7600</text>
+        <text x="80" y="40">6008</text>
+        <text x="80" y="120">2521</text>
+        <text x="80" y="160">1650</text>
+        <text x="80" y="180">1262</text>
+        <text x="80" y="220">978</text>
+        <text x="80" y="255">791</text>
+        <text x="80" y="290">710</text>
+        <text x="80" y="310">660</text>
+        <text x="80" y="340">585</text>
+        <text x="80" y="373">0</text>
+        <text class="label-title" transform="translate(40,130)rotate(270)">Population  in  millions</text>
+      </g>
+
+      <g class="data" data-setname="Our first data set">
+        <circle cx="90" cy="340" data-value="7.2" r="4"></circle>
+        <circle cx="240" cy="310" data-value="8.1" r="4"></circle>
+        <circle cx="390" cy="290" data-value="7.7" r="4"></circle>
+        <circle cx="465" cy="255" data-value="7.7" r="4"></circle>
+        <circle cx="540" cy="220" data-value="7.7" r="4"></circle>
+        <circle cx="615" cy="180" data-value="7.7" r="4"></circle>
+        <circle cx="690" cy="160" data-value="7.7" r="4"></circle>
+        <circle cx="765" cy="120" data-value="7.7" r="4"></circle>
+        <circle cx="840" cy="40" data-value="7.7" r="4"></circle>
+        <circle cx="890" cy="15" data-value="7.7" r="4"></circle>
+      </g>
+    </svg>
   </article>
 
   <article id="europeArticle">
@@ -141,14 +197,14 @@
 
   <article id="statisticsArticle" class="main-article">
     <figure>
-      <figcaption>A graph that shows the number of fruit collected</figcaption>
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="chart" width="420" height="150" aria-labelledby="title" role="img">
+      <figcaption>{{this.statistic_title}}</figcaption>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="chart" width="700" height="500" aria-labelledby="title" role="img">
         <title id="title">A bar chart showing information</title>
 
         <g class="bar" *ngFor=" let statistic of statistics; let i = index; ">
-          <!--<rect width="{{statistic.width}}" height="19" y="{{i * 20}}"></rect>
-          <text x="{{5 + statistic.width}}" y="{{8 + i * 20}}" dy=".35em">{{statistic.text}}</text> -->
-          <text x="40" y="40" dy=".35em"> {{statistic.text}} </text>
+          <rect attr.width="{{statistic.width}}" height="19" attr.y="{{setRectY(i)}}"></rect>
+          <text attr.x="{{setTextX(statistic)}}" attr.y="{{setTextY(i)}}" dy=".35em">{{statistic.text}}</text>
+          <!--<text attr.x="{{setTextX(statistic)}}" attr.y="{{setTextY(i)}}" dy=".35em"> {{statistic.text}} </text>-->
         </g>
 
       </svg>
@@ -232,7 +288,7 @@
   </article>
 
   <article id="statisticsArticleAside">
-    <button (click)="this.setSomething()"> Click me for some statistics! </button>
+    <button (click)="this.setStatistic('rivers')"> Click me for some statistics! </button>
   </article>
 
 </aside>
