@@ -173,4 +173,41 @@ export class LearningComponent implements OnInit {
     this.getContinent();
   }
 
+
+  /* Statistic elements */
+
+  statistic_name:string = "";
+  statistics = [];
+
+  setStatistic(selected_statistics) {
+    this.getStatisticsJson()
+    .subscribe(
+      response => {
+        let responseJson = response.json();
+        this.statistics = [];
+        this.statistic_name = "";
+
+        for (let i = 0; i < (<any>responseJson).options.length; i++) {
+          if ((<any>responseJson).options[i].statistic_name == selected_statistics) {
+            for (let j = 0; j < (<any>responseJson).options[i].statistics[0].elements.length; j++) {
+              this.statistics.push((<any>responseJson).options[i].statistics[0].elements[j]);
+            }
+
+            break;
+          }
+        }
+
+      }
+    )
+  }
+
+
+  getStatisticsJson() {
+    return this.http.get("../../assets/data/statistics.json");
+  }
+
+  setSomething() {
+    this.setStatistic('rivers');
+  }
+
 }

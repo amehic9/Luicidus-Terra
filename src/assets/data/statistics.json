@@ -1,0 +1,57 @@
+{
+    "options":
+    [
+        {
+            "statistic_name": "rivers",
+            "statistics":
+            [
+                {
+                    "title": "Ten longest rivers in the world",
+                    "elements":
+                    [
+                        {
+                            "width": "40",
+                            "text": "4444 km - Amur"
+                        },
+                        {
+                            "width": "60",
+                            "text": "4700 km - Congo"
+                        },
+                        {
+                            "width": "80",
+                            "text": "4880 km - Parana"
+                        },
+                        {
+                            "width": "100",
+                            "text": "5410 km - Ob"
+                        },
+                        {
+                            "width": "120",
+                            "text": "5464 km - Yellow River"
+                        },
+                        {
+                            "width": "140",
+                            "text": "5539 km - Yenisei"
+                        },
+                        {
+                            "width": "160",
+                            "text": "6275 km - Mississippi"
+                        },
+                        {
+                            "width": "180",
+                            "text": "6300 km - Yangtze"
+                        },
+                        {
+                            "width": "200",
+                            "text": "6853 km - Nile"
+                        },
+                        {
+                            "width": "220",
+                            "text": "6992 km - Amazon"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

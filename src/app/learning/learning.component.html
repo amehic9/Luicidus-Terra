@@ -140,7 +140,19 @@
   </article>
 
   <article id="statisticsArticle" class="main-article">
-    <p> This is the statistics Article </p>
+    <figure>
+      <figcaption>A graph that shows the number of fruit collected</figcaption>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="chart" width="420" height="150" aria-labelledby="title" role="img">
+        <title id="title">A bar chart showing information</title>
+
+        <g class="bar" *ngFor=" let statistic of statistics; let i = index; ">
+          <!--<rect width="{{statistic.width}}" height="19" y="{{i * 20}}"></rect>
+          <text x="{{5 + statistic.width}}" y="{{8 + i * 20}}" dy=".35em">{{statistic.text}}</text> -->
+          <text x="40" y="40" dy=".35em"> {{statistic.text}} </text>
+        </g>
+
+      </svg>
+    </figure>
   </article>
 
 </section>
@@ -220,7 +232,7 @@
   </article>
 
   <article id="statisticsArticleAside">
-    Statistics aside.
+    <button (click)="this.setSomething()"> Click me for some statistics! </button>
   </article>
 
 </aside>
