@@ -277,8 +277,9 @@ h1 {
   
   
   .graph {
-    height: 600px;
+    height: 950px;
     width: 1000px;
+    padding-top: 50px;
   }
   
   .graph .grid {
@@ -305,5 +306,10 @@ h1 {
 
   .statistic-text {
     width: 500px;
+  }
+
+  .home-text {
+    text-align: center;
+    padding-top: 10px;
   }
 

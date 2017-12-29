@@ -20,62 +20,85 @@
   <section class="leftHalf">
 
   <article id="homeArticle">
-    <p> As one small touch to start with our learning procedure, we would like to present the graph which indicates the world
-    population through different years. It is certainly a curve worthy of inspecting. </p>
 
-    <br> <br>
+    <p class="home-text"> We would like to invite you in our little journey over the geographic fields and knowledge.
+       The more we know, the more we are worth. </p>
+
+    <p class="home-text"> Each of the elements in our sub-menu will teach you about different things. 
+      Feel free to click on them and discover them yourselfs. </p>
+
+    <p class="home-text"> As one small touch to start with our learning procedure, we would like to present the graph which indicates the world
+    population through different years. It is certainly a curve worthy of inspecting. </p>
 
     <svg version="1.2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="graph" aria-labelledby="title" role="img">
       <title id="title">A line chart showing population information</title>
 
       <g class="grid x-grid" id="xGrid">
-        <line x1="90" x2="90" y1="5" y2="371"></line>
+        <line x1="90" x2="90" y1="5" y2="800"></line>
       </g>
       <g class="grid y-grid" id="yGrid">
-        <line x1="90" x2="900" y1="370" y2="370"></line>
+        <line x1="90" x2="900" y1="800" y2="800"></line>
       </g>
 
       <g class="labels x-labels">
-        <text x="100" y="400">1500</text>
-        <text x="250" y="400">1600</text>
-        <text x="400" y="400">1700</text>
-        <text x="475" y="400">1750</text>
-        <text x="550" y="400">1800</text>
-        <text x="625" y="400">1850</text>
-        <text x="700" y="400">1900</text>
-        <text x="775" y="400">1950</text>
-        <text x="850" y="400">2000</text>
-        <text x="900" y="400">2018</text>
-        <text x="500" y="440" class="label-title">Year</text>
+        <text x="100" y="820">1500</text>
+        <text x="250" y="820">1600</text>
+        <text x="400" y="820">1700</text>
+        <text x="475" y="820">1750</text>
+        <text x="550" y="820">1800</text>
+        <text x="625" y="820">1850</text>
+        <text x="700" y="820">1900</text>
+        <text x="775" y="820">1950</text>
+        <text x="850" y="820">2000</text>
+        <text x="900" y="820">2018</text>
+        <text x="500" y="850" class="label-title">Year</text>
       </g>
 
       <g class="labels y-labels">
         <text x="80" y="15">7600</text>
-        <text x="80" y="40">6008</text>
-        <text x="80" y="120">2521</text>
-        <text x="80" y="160">1650</text>
-        <text x="80" y="180">1262</text>
-        <text x="80" y="220">978</text>
-        <text x="80" y="255">791</text>
-        <text x="80" y="290">710</text>
-        <text x="80" y="310">660</text>
-        <text x="80" y="340">585</text>
-        <text x="80" y="373">0</text>
-        <text class="label-title" transform="translate(40,130)rotate(270)">Population  in  millions</text>
+        <text x="80" y="140">6008</text>
+        <text x="80" y="480">2521</text>
+        <text x="80" y="575">1650</text>
+        <text x="80" y="610">1262</text>
+        <text x="80" y="650">978</text>
+        <text x="80" y="690">791</text>
+        <text x="80" y="705">710</text>
+        <text x="80" y="720">660</text>
+        <text x="80" y="738">585</text>
+        <text x="80" y="800">0</text>
+        <text class="label-title" transform="translate(40,330)rotate(270)">Population  in  millions</text>
       </g>
 
       <g class="data" data-setname="Our first data set">
-        <circle cx="90" cy="340" data-value="7.2" r="4"></circle>
-        <circle cx="240" cy="310" data-value="8.1" r="4"></circle>
-        <circle cx="390" cy="290" data-value="7.7" r="4"></circle>
-        <circle cx="465" cy="255" data-value="7.7" r="4"></circle>
-        <circle cx="540" cy="220" data-value="7.7" r="4"></circle>
-        <circle cx="615" cy="180" data-value="7.7" r="4"></circle>
-        <circle cx="690" cy="160" data-value="7.7" r="4"></circle>
-        <circle cx="765" cy="120" data-value="7.7" r="4"></circle>
-        <circle cx="840" cy="40" data-value="7.7" r="4"></circle>
+        <circle cx="90" cy="738" data-value="7.2" r="4"></circle>
+        <circle cx="240" cy="720" data-value="8.1" r="4"></circle>
+        <circle cx="390" cy="705" data-value="7.7" r="4"></circle>
+        <circle cx="465" cy="690" data-value="7.7" r="4"></circle>
+        <circle cx="540" cy="650" data-value="7.7" r="4"></circle>
+        <circle cx="615" cy="610" data-value="7.7" r="4"></circle>
+        <circle cx="690" cy="575" data-value="7.7" r="4"></circle>
+        <circle cx="765" cy="480" data-value="7.7" r="4"></circle>
+        <circle cx="840" cy="140" data-value="7.7" r="4"></circle>
         <circle cx="890" cy="15" data-value="7.7" r="4"></circle>
       </g>
+
+      <polyline
+      fill="none"
+      stroke="#0074d9"
+      stroke-width="1.5"
+      points="
+        90,738
+        240,720
+        390,705
+        465,690
+        540,650
+        615,610
+        690,575
+        765,480
+        840,140
+        890,15
+      "
+    />
     </svg>
   </article>
 
@@ -219,8 +242,10 @@
 
 <aside class="rightHalf">
 
-  <article id="homeArticleAside">
-    Home aside.
+  <article id="homeArticleAside" style="padding-top: 250px;">
+    <p style="text-align: center; font-weight: bold;"> Help your planet and help yourself </p>
+    <br>
+    <img src="../../assets/images/globe.jpg" alt="Cannot open the image" width="50%" style="margin: auto; display: block;" />
   </article>
 
   <article id="europeArticleAside">
