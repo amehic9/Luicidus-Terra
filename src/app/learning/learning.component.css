@@ -311,5 +311,8 @@ h1 {
   .home-text {
     text-align: center;
     padding-top: 10px;
+    font: 16pt "Palatino Linotype"; 
+    color: rgba(0, 0, 0, 0.7);
+    text-shadow:0 0 4px rgba(255,255,255,0.5);
   }
 
