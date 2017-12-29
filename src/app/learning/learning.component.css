@@ -111,11 +111,13 @@ h1 {
 
   #homeArticle, #homeArticleAside {
     display: block;
+    padding-left: 10px;
   }
 
   #europeArticle, #continentsArticle, #statisticsArticle,
   #europeArticleAside, #continentsArticleAside, #statisticsArticleAside {
     display: none;
+    padding-left: 10px;
   }
 
   .main-article {
@@ -301,5 +303,7 @@ h1 {
     stroke-width: 1; 
   }
 
-
+  .statistic-text {
+    width: 500px;
+  }
 

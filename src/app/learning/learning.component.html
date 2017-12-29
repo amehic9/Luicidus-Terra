@@ -8,11 +8,11 @@
 
   <nav class="nav">
     <ul>
-        <li class="home"> <a id="home" (click) = "this.setActiveNav('home');"> Ready, Set, Go </a> </li>
-        <li class="tutorials"> <a id="europe" (click) = "this.setActiveNav('europe');"> Let's Learn Europe </a> </li>
-        <li class="about"> <a id="continents" (click) = "this.setActiveNav('continents');"> All About Continents </a> </li>
-        <li class="news"> <a id="statistics" (click) = "this.setActiveNav('statistics');"> Wordly Statistics </a> </li>
-      </ul>
+      <li class="home"> <a id="home" (click) = "this.setActiveNav('home');"> Ready, Set, Go </a> </li>
+      <li class="tutorials"> <a id="europe" (click) = "this.setActiveNav('europe');"> Let's Learn Europe </a> </li>
+      <li class="about"> <a id="continents" (click) = "this.setActiveNav('continents');"> All About Continents </a> </li>
+      <li class="news"> <a id="statistics" (click) = "this.setActiveNav('statistics');"> Wordly Statistics </a> </li>
+    </ul>
   </nav>
 
   <hr>
@@ -183,7 +183,7 @@
   </article>
 
   <article id="continentsArticle" style="width : 100%;" >
-    <section class = "leftHalf" style="padding-left: 10px;">
+    <section class = "leftHalf">
       <div class="greenboard">
         <p class="greenboard-text" > {{this.continent_info.name}} - {{this.continent_info.data}} </p>
       </div>
@@ -198,13 +198,17 @@
   <article id="statisticsArticle" class="main-article">
     <figure>
       <figcaption>{{this.statistic_title}}</figcaption>
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="chart" width="700" height="500" aria-labelledby="title" role="img">
+
+      <p class="statistic-text"> {{this.statistic_text}} </p>
+      <br>
+
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+       class="chart" width="1000" height="500" aria-labelledby="title" role="img">
         <title id="title">A bar chart showing information</title>
 
         <g class="bar" *ngFor=" let statistic of statistics; let i = index; ">
           <rect attr.width="{{statistic.width}}" height="19" attr.y="{{setRectY(i)}}"></rect>
           <text attr.x="{{setTextX(statistic)}}" attr.y="{{setTextY(i)}}" dy=".35em">{{statistic.text}}</text>
-          <!--<text attr.x="{{setTextX(statistic)}}" attr.y="{{setTextY(i)}}" dy=".35em"> {{statistic.text}} </text>-->
         </g>
 
       </svg>
@@ -288,7 +292,24 @@
   </article>
 
   <article id="statisticsArticleAside">
-    <button (click)="this.setStatistic('rivers')"> Click me for some statistics! </button>
+    <p class = "country-element"> Please pick the statistic you would like to inspect: </p>
+    
+    <div class="select dropDown-continents" tabindex="1">
+      <input (click) = "this.setStatistic('');" class="selectopt" name="testStatistic" type="radio" id="optStat0" checked>
+      <label for="optStat0" class="option"> Pick a statistic... </label>
+
+      <input (click) = "this.setStatistic('rivers')" class="selectopt" name="testStatistic" type="radio" id="optStat1" >
+      <label for="optStat1" class="option"> Rivers </label>
+
+      <input (click) = "this.setStatistic('mountains')" class="selectopt" name="testStatistic" type="radio" id="optStat2">
+      <label for="optStat2" class="option"> Mountains </label>
+
+      <input (click) = "this.setStatistic('deserts')" class="selectopt" name="testStatistic" type="radio" id="optStat3">
+      <label for="optStat3" class="option"> Deserts </label>
+    </div>  
+
+
+    <!-- <button (click)="this.setStatistic('deserts')"> Click me for some statistics! </button> -->
   </article>
 
 </aside>

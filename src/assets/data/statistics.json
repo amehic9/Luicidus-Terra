@@ -7,47 +7,142 @@
             [
                 {
                     "title": "Ten longest rivers in the world",
+                    "text": "The following graph represents the longest rivers in the entire world. It only shows the top 10 longest rivers and not the largest rivers (where the area would also be taken into the consideration). Rivers are our natural wonder and our root of life.",
                     "elements":
                     [
                         {
                             "width": "100",
-                            "text": "4444 km - Amur"
+                            "text": "4444 km - Amur (Asia -China)"
                         },
                         {
                             "width": "155",
-                            "text": "4700 km - Congo"
+                            "text": "4700 km - Congo (Africa - mostly Congo)"
                         },
                         {
                             "width": "160",
-                            "text": "4880 km - Parana"
+                            "text": "4880 km - Parana (Central South America)"
                         },
                         {
                             "width": "170",
-                            "text": "5410 km - Ob"
+                            "text": "5410 km - Ob (Russia - Western Siberia)"
                         },
                         {
                             "width": "173",
-                            "text": "5464 km - Yellow River"
+                            "text": "5464 km - Yellow River (China)"
                         },
                         {
                             "width": "182",
-                            "text": "5539 km - Yenisei"
+                            "text": "5539 km - Yenisei (Russia - Siberia)"
                         },
                         {
                             "width": "193",
-                            "text": "6275 km - Mississippi"
+                            "text": "6275 km - Mississippi (North America)"
                         },
                         {
                             "width": "195",
-                            "text": "6300 km - Yangtze"
+                            "text": "6300 km - Yangtze (China)"
                         },
                         {
                             "width": "198",
-                            "text": "6853 km - Nile"
+                            "text": "6853 km - Nile (Africa - mostly Egypt and Ethiopia)"
                         },
                         {
                             "width": "210",
-                            "text": "6992 km - Amazon"
+                            "text": "6992 km - Amazon (South America)"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "statistic_name": "mountains",
+            "statistics":
+            [
+                {
+                    "title": "Highest peaks in the world by geographic regions and continents",
+                    "text": "The idea behind the following representation lies in showing the highest peaks in the world, separated by indidividual continents and larger geographic regions. It is a very interesting list, specifically knowing that ten highest peaks in the world are actually from the Himalayas and that would not do other mountains justice.",
+                    "elements":
+                    [
+                        {
+                            "width": "100",
+                            "text": "2228 m - Kosciuszko (Australia)"
+                        },
+                        {
+                            "width": "236",
+                            "text": "4810 m - Mont Blanc (Europe)"
+                        },
+                        {
+                            "width": "245",
+                            "text": "4884 m - Puncak Jaya (New Guinea)"
+                        },
+                        {
+                            "width": "250",
+                            "text": "4892 m - Vinson (Antartica)"
+                        },
+                        {
+                            "width": "278",
+                            "text": "5642 m - Elbrus (Caucasus)"
+                        },
+                        {
+                            "width": "290",
+                            "text": "5895 m - Kilimanjaro (Africa)"
+                        },
+                        {
+                            "width": "303",
+                            "text": "6194 m - Denali (North America - Alaska)"
+                        },
+                        {
+                            "width": "340",
+                            "text": "6961 m - Aconcagua (South America)"
+                        },
+                        {
+                            "width": "425",
+                            "text": "8848 m - Everest (Asia)"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "statistic_name": "deserts",
+            "statistics":
+            [
+                {
+                    "title": "Largest deserts by area in the world",
+                    "text": "Luckily we are mostly living close to green fields, forrests and rivers. But not everyone does so. We bring you the largest deserts in the world, taking in account both sand and snow deserts. To make the graph feasable, the largest two snow deserts in the world, Arctic and Antartica (14,000,000 km2) are left out.",
+                    "elements":
+                    [
+                        {
+                            "width": "50",
+                            "text": "492,200 km2 - Great Basin Desert (United States) "
+                        },
+                        {
+                            "width": "62",
+                            "text": "520,000 km2 - Syrian Desert (Jordan, Iraq and Syria)"
+                        },
+                        {
+                            "width": "73",
+                            "text": "620,000 km2 - Patagonian Desert (South America)"
+                        },
+                        {
+                            "width": "80",
+                            "text": "647,000 km2 - Great Victoria Desert (Australia)"
+                        },
+                        {
+                            "width": "100",
+                            "text": "900,000 km2 - Kalahari Desert (Southern Africa)"
+                        },
+                        {
+                            "width": "110",
+                            "text": "1,000,000 km2 - Gobi Desert (Central Asia)"
+                        },
+                        {
+                            "width": "240",
+                            "text": "2,330,000 km2 - Arabian Desert (Western Asia)"
+                        },
+                        {
+                            "width": "750",
+                            "text": "9,000,000+ km2 - Sahara (North Africa)"
                         }
                     ]
                 }
