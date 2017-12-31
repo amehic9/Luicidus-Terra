@@ -36,6 +36,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     
+    //allow drag and drop inside User profile
     window.addEventListener("dragover",function(e){
       e.preventDefault();
     },false);
@@ -43,6 +44,7 @@ export class UserComponent implements OnInit {
       e.preventDefault();
     },false);
 
+    //take values from brower storage, if they are already stored there
     if (typeof(Storage) !== "undefined") {
       this.user.name = localStorage.getItem("name");
       this.user.surname = localStorage.getItem("surname");
@@ -76,13 +78,14 @@ export class UserComponent implements OnInit {
       }
       this.getQuizHistory();
     }
+    //get user's initial location (if this is his first time opening this subpage)
     else {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(this.showPosition);
       }
     }
     setTimeout(() =>{
-      
+        //create Leaflet map
         setTimeout(() =>{
           var mymap = L.map('mapid').setView([lat, lon], 16);
           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -94,7 +97,7 @@ export class UserComponent implements OnInit {
           let marker = L.marker([lat, lon]).addTo(mymap);
 
           marker.dragging.enable();
-
+          //add event on dragend of marker on the map
           marker.on('dragend', (ev) => {
             var changedPos = ev.target.getLatLng();
             lat = changedPos.lat;
@@ -107,11 +110,12 @@ export class UserComponent implements OnInit {
   }
 
   getColor() {
+    //set user profile color
      localStorage.setItem("color", (<any> document.getElementById("colorprofile")).value);
      $(".user-box").css("border", "1px solid " + localStorage.getItem("color"));
   }
 
-  //dropped thumbnail
+  //dropped thumbnail method (take dropped image and show it inside <img> DOM)
   dropImage(event) {
     event.preventDefault();
     var dt = event.dataTransfer;
@@ -123,6 +127,7 @@ export class UserComponent implements OnInit {
 
       var reader = new FileReader();
       reader.onload = function(e){
+          //show droped image inside DOM with class "image-preview"
           $(".image-preview").attr("src", (<any>e).target.result);
       };
       reader.readAsDataURL(file);
@@ -131,6 +136,7 @@ export class UserComponent implements OnInit {
     return false;
   }
 
+  //check if dropped file is actually an image
   isImage(file) {
     let split = file.split('.');
     if (split[split.length - 1].toLowerCase() == 'jpg' || split[split.length - 1].toLowerCase() == 'png') {
@@ -139,6 +145,7 @@ export class UserComponent implements OnInit {
     return false;
   }
 
+  //get user's quiz history and show number of correct/total answers
   getQuizHistory() {
     if (localStorage.getItem("flags-quiz-correct-answers")) {
     this.flagsQuizCorrectAnswers = parseInt(localStorage.getItem("flags-quiz-correct-answers"));
@@ -159,7 +166,6 @@ export class UserComponent implements OnInit {
       this.colorQuizCorrectAnswers = 0;
     }
   
-
     if (localStorage.getItem("flags-total-answers")) {
       this.totalFlagsQuestions = parseInt(localStorage.getItem("flags-total-answers"));
     }
@@ -185,6 +191,7 @@ export class UserComponent implements OnInit {
     lon = position.coords.longitude; 
   }
 
+  //save new User information after clicking on button EDIT
   saveInformation() {
     this.userForEdit.birthday = $("#birthday").val();
     localStorage.setItem("name", this.userForEdit.name);
@@ -200,6 +207,7 @@ export class UserComponent implements OnInit {
     this.getColor();
   }
 
+  //abort editing User's information and reset values to initial ones
   cancelUserEdit() {
     this.userForEdit.name = this.user.name;
     this.userForEdit.surname = this.user.surname;

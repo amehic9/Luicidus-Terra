@@ -37,6 +37,8 @@ export class QuizComponent implements OnInit {
   constructor(private route: ActivatedRoute, private http: Http) { }
 
   ngOnInit() {
+    //get user's current results from quiz from browser storage.
+    //this information is needed to calculate total quiz history after user does another round of quizes
     this.getQuizHistory();
   }
 
@@ -81,12 +83,15 @@ export class QuizComponent implements OnInit {
     }
   }
 
+  //this method is being called automatically by angular once user leaves Quiz component
   ngOnDestroy() {
     if (!this.quizEnded) {
       this.atQuizEnd();
     }
   }
 
+  //this method is being called when user starts a quiz
+  //it gets questions stored in JSON file
   getQuestions() {
     this.getQuestionsJson()
       .subscribe(
@@ -110,6 +115,9 @@ export class QuizComponent implements OnInit {
   incrementSeconds() {
     this.seconds += 1;
   }
+
+  //the next three methods are responsible for handling start event of 3 different types of quizes
+  //they prepare the view for user, and also logic from the "behind"
 
   startFlagsQuiz() {
     this.quizEnded = false;
@@ -204,6 +212,7 @@ export class QuizComponent implements OnInit {
     this.questions.splice(index, 1);
   }
 
+  //shuffles answers so the correct answer is always being shown on random position
   shuffleAnswers() {
     for (let i = this.answers.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -211,6 +220,7 @@ export class QuizComponent implements OnInit {
     }
   }
 
+  //shuffles questions so they are not being shown in the order they come from JSON
   shuffleQuestions() {
     for (let i = this.allQuestions.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -218,6 +228,7 @@ export class QuizComponent implements OnInit {
     }
   }
 
+  //this method is being called from the view, once user clicks on the answer he thinks is the correct one
   submitAnswer(answer) {
     if (answer === (<any>this.currentQuestion).correct) {
       this.correctAnswers++;
@@ -306,6 +317,9 @@ export class QuizComponent implements OnInit {
         this.flag_colors[2] = this.currentColor;
       }
   }
+
+  //following two methods play or stop sound which is being played while the quiz is on.
+  //if it is distracting the user, he has the option of stopping the audio by clicking on the button.
 
   playAudio(){
     (<any>$("#sound")).trigger('play')
