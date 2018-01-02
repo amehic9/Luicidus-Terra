@@ -12,6 +12,7 @@ import * as $ from 'jquery';
 
 import { ImageZoomModule } from 'angular2-image-zoom';
 
+// Add routes, links in the main navigation menu, that are going to be used
 const appRoutes: Routes = [
   //{ path: 'learning/:continent', component: LearningComponent },
   { path: 'learning', component: LearningComponent },

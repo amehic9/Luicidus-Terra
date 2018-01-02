@@ -8,11 +8,13 @@ import { Http } from '@angular/http';
   styleUrls: ['./learning.component.css']
 })
 
+// Class for supplying functions for the Learning environment
 export class LearningComponent implements OnInit {
   continent = this.route.snapshot.params['continent'];
   constructor(private route: ActivatedRoute,  private http: Http) { }
 
   //countryInfo:any = [];
+  // Variable used to display information about the current country selected in the Europe learning sub-page
   countryInfo = {
     "name": "",
     "nativeName": "",
@@ -40,6 +42,9 @@ export class LearningComponent implements OnInit {
   // Current active sub-menu
   activeMenu:string = "";
 
+  // This is an observable function which gets called each time an European country is selected in the
+  // Europe learning sub-page. It calls for an Ajax request which takes the JSON file from a REST service
+  // and gets the data that it needs. 
   getCountries() {
     this.getCountriesJson()
       .subscribe(
@@ -84,35 +89,41 @@ export class LearningComponent implements OnInit {
       )
   }
 
+  // For calling the REST service in the Europe country loading of the Ajax service. It returns a Json file.
   getCountriesJson() {
     return this.http.get("https://restcountries.eu/rest/v2/name/" + this.curret_country.toLowerCase());
-    //return this.http.get("https://restcountries.eu/rest/v2/alpha/col");
 
     // https://github.com/fayder/restcountriess
   }
 
+  // Called on the load of the page
   ngOnInit() {
     $("#home").toggleClass('active');
     this.activeMenu = "#home";
   }
 
+  // When a country is selected in the Europe Learning sub-page, the following actions are followed.
   setCountry(country) {
     this.curret_country = country;
     this.getCountries();
   }
 
 
+  // For setting an anthem through the getCountries() function.
   setAnthem() {
     this.anthem_file = "assets/audio/" + this.curret_country + ".mp3";
 
     this.play();
   }
 
+  // For loading and playing the anthem, called by the setAnthem() function.
   play() {
     (<any>$("#sound-anthem")).trigger('load');
     (<any>$("#sound-anthem")).trigger('play');
   }
 
+  // Navigation of the sub-menu. It is activated to indicate the different CSS 
+  // for the currenlty active and other, non-active, options.
   setActiveNav(object) {
     $(this.activeMenu).toggleClass('active');
 
@@ -124,6 +135,8 @@ export class LearningComponent implements OnInit {
     this.activeMenu =  "#" + object + "";
   }
 
+  // In the Continent Learning page, to make the image of the continent enlarged whenever it is
+  // entered with a mouse.
   enterMouse() {
     $("#continentImg").hover(
       function(){
@@ -133,6 +146,8 @@ export class LearningComponent implements OnInit {
     );
   }
 
+  // In the Continent Learning page, to make the image of the continent normal sized whenever it is
+  // left with a mouse.
   leaveMouse() {
     $("#continentImg").hover(
       function(){
@@ -147,6 +162,8 @@ export class LearningComponent implements OnInit {
   current_continent:string = "";
   continent_info = [];
 
+  // Observable function for getting he necessary data from a JSON file
+  // in the Ajax process.
   getContinent() {
     this.getContinentJson()
     .subscribe(
@@ -164,10 +181,13 @@ export class LearningComponent implements OnInit {
     )
   }
 
+  // For calling and getting the specific JSON file.
   getContinentJson() {
     return this.http.get("../../assets/data/continents.json");
   }
 
+  // Function for setting the current continent in the Continet Learning sub-page.
+  // It is an Ajax process.
   setContinent(selected_continent) {
     this.current_continent = selected_continent;
     this.getContinent();
@@ -180,6 +200,8 @@ export class LearningComponent implements OnInit {
   statistic_text:string = "";
   statistics = [];
 
+  // Ajax observable function for selecting and providing the data
+  // of a specific statistic.
   setStatistic(selected_statistics) {
     this.getStatisticsJson()
     .subscribe(
@@ -206,26 +228,33 @@ export class LearningComponent implements OnInit {
     )
   }
 
-
+  // Getting the specific JSON file needed for the Statistic Learning sub-page.
   getStatisticsJson() {
     return this.http.get("../../assets/data/statistics.json");
   }
 
+  // Test function for the statistic.
   setSomething() {
     this.setStatistic('rivers');
   }
 
 
+  // For a dynamic drawing of the statistics which are read from the JSON file.
+  // This specific function is for the rectangular SVG.
   setRectY(index) {
     let new_y = index * 20;
     return new_y;
   }
 
+  // For a dynamic drawing of the statistics which are read from the JSON file.
+  // This specific function is for the text SVG, x-axis.
   setTextX(statistic) {
     let new_width = 5 + parseInt(statistic.width);
     return new_width;
   }
 
+  // For a dynamic drawing of the statistics which are read from the JSON file.
+  // This specific function is for the text SVG, y-axis.
   setTextY(index) {
     let new_y = 8 + index * 20;
     return new_y;

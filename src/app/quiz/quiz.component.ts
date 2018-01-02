@@ -200,6 +200,7 @@ export class QuizComponent implements OnInit {
     }, 1000);
   }
 
+  // For loading the next question during the quiz execution.
   showNextQuestion() {
     let index = Math.floor(Math.random() * (this.questions.length - 1 - 0) + 0);
     this.currentQuestion = this.questions[index];
@@ -242,6 +243,7 @@ export class QuizComponent implements OnInit {
     }
   }
 
+  // Function for checking the submission of the flag coloring quiz.
   submitAnswerColorFlag() {
     let correct_flag_colors = (<any>this.currentQuestion).correct;
 
@@ -267,6 +269,7 @@ export class QuizComponent implements OnInit {
     }
   }
 
+  // Updates the view after the quiz ends, alongside the user data in the Web Storage.
   atQuizEnd() {
     this.quizEnded = true;
     this.stopAudio();
@@ -304,6 +307,7 @@ export class QuizComponent implements OnInit {
     });
   }
 
+  // Function for coloring the flag (part of it) when the user makes its action.
   colorFlag(object): void{
       object.target.attributes['fill'].value = this.currentColor;
       
